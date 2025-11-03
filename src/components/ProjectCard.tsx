@@ -8,12 +8,22 @@ interface ProjectCardProps {
   techStack: { name: string; icon: React.ReactNode }[];
   githubUrl?: string;
   liveUrl?: string;
+  imageUrl: string;
 }
 
-const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, techStack, githubUrl, liveUrl, imageUrl }: ProjectCardProps) => {
   return (
     <Card className="group relative overflow-hidden border-2 border-border bg-card hover:border-primary transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl card-glow-hover animate-fade-in">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+      <div className="relative h-48 overflow-hidden">
+        <img 
+          src={imageUrl} 
+          alt={title}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+      </div>
       
       <div className="relative p-6">
         <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">

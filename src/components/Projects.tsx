@@ -1,6 +1,9 @@
 import ProjectCard from "./ProjectCard";
 import { FaReact, FaNodeJs, FaPython, FaDocker } from "react-icons/fa";
 import { SiTypescript, SiTailwindcss, SiPostgresql, SiMongodb, SiNextdotjs, SiExpress } from "react-icons/si";
+import ecommerceCover from "@/assets/ecommerce-cover.jpg";
+import taskManagerCover from "@/assets/taskmanager-cover.jpg";
+import aiContentCover from "@/assets/aicontent-cover.jpg";
 
 const Projects = () => {
   const projects = [
@@ -15,6 +18,7 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com",
       liveUrl: "https://example.com",
+      imageUrl: ecommerceCover,
     },
     {
       title: "Task Management System",
@@ -27,6 +31,7 @@ const Projects = () => {
       ],
       githubUrl: "https://github.com",
       liveUrl: "https://example.com",
+      imageUrl: taskManagerCover,
     },
     {
       title: "AI Content Generator",
@@ -38,6 +43,7 @@ const Projects = () => {
         { name: "Docker", icon: <FaDocker className="h-4 w-4" /> },
       ],
       githubUrl: "https://github.com",
+      imageUrl: aiContentCover,
     },
   ];
 
