@@ -15,9 +15,9 @@ import {
 const Projects = () => {
   const projects = [
     {
-      title: "Vehicle Rental System (Vutungtung)",
+      title: "Vehicle Rental Plartform (Vutungtung)",
       description:
-        "A full-featured e-commerce platform with product management, cart functionality, and secure payment integration. Built with modern web technologies for optimal performance.",
+        "A full-stack vehicle rental platform where users can book and manage vehicles by category with profile dashboards and secure payments via eSewa or cash on delivery.",
       techStack: [
         { name: "React", icon: <FaReact className="h-4 w-4" /> },
         { name: "Node.js", icon: <FaNodeJs className="h-4 w-4" /> },
@@ -32,7 +32,7 @@ const Projects = () => {
     {
       title: "Resume Builder & AI coach (Aivise)",
       description:
-        "Collaborative task management application with real-time updates, team collaboration features, and intuitive drag-and-drop interface.",
+        "An AI-powered resume builder and chat app (Aivise) that helps users create resumes and get career coaching through interactive AI conversations, built with Next.js, Convex, Clerk, Node.js, and Express.",
       techStack: [
         { name: "Next.js", icon: <SiNextdotjs className="h-4 w-4" /> },
         { name: "Node.js", icon: <FaNodeJs className="h-4 w-4" /> },
@@ -46,7 +46,7 @@ const Projects = () => {
     {
       title: "Clothing Store (Magnis)",
       description:
-        "AI-powered content generation tool leveraging machine learning models to create high-quality written content with customizable parameters.",
+        "An online clothing store (Magnis) built with React, JavaScript, and Tailwind CSS, offering a modern, responsive shopping experience.",
       techStack: [
         { name: "JavaScript", icon: <SiJavascript className="h-4 w-4" /> },
         { name: "React", icon: <FaReact className="h-4 w-4" /> },
