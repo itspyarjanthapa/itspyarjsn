@@ -121,7 +121,7 @@ const TechStack = () => {
           {technologies.map((tech, index) => (
             <div
               key={index}
-              className="group flex flex-col items-center justify-center p-6 rounded-lg bg-card border-2 border-border hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-2xl card-glow-hover animate-fade-in"
+              className="group flex flex-col items-center justify-center p-6 rounded-lg  bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_5px)] border-2 border-border hover:border-primary transition-all duration-300 hover:scale-110 hover:shadow-2xl card-glow-hover animate-fade-in"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div

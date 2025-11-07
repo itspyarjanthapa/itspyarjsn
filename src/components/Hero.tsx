@@ -15,8 +15,15 @@ const Hero = () => {
       </div>
 
       {/* Grid Pattern Overlay */}
+    
       <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black,transparent)]" />
 
+      {/* YouTube Subscriber Watermark */}
+      {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <h2 className="text-[12rem] sm:text-[16rem] md:text-[12rem]  text-center font-extrabold text-white/5 select-none uppercase tracking-widest">
+          LEARN • CODE • REPEAT
+        </h2>
+      </div> */}
       <div className="max-w-6xl w-full relative z-10">
         <div className="text-center space-y-8">
           {/* Greeting Badge */}

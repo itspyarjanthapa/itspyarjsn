@@ -1,5 +1,12 @@
 import ProjectCard from "./ProjectCard";
-import { FaReact, FaNodeJs, FaPython, FaDocker, FaJava } from "react-icons/fa";
+import {
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaDocker,
+  FaJava,
+  FaCss3,
+} from "react-icons/fa";
 import {
   SiTypescript,
   SiTailwindcss,
@@ -10,6 +17,7 @@ import {
   SiClerk,
   SiJavascript,
   SiMysql,
+  SiHtml5,
 } from "react-icons/si";
 
 const Projects = () => {
@@ -42,6 +50,19 @@ const Projects = () => {
 
       liveUrl: "https://aivise-kappa.vercel.app/chat",
       imageUrl: "/aivise.png",
+    },
+    {
+      title: "Typing Speed Test",
+      description:
+        "Challenge yourself to type quickly and precisely before the timer runs out. View your WPM and accuracy score instantly to improve your typing skills.",
+      techStack: [
+        { name: "HTML", icon: <SiHtml5 className="h-4 w-4" /> },
+        { name: "CSS", icon: <FaCss3 className="h-4 w-4" /> },
+        { name: "JavaScript", icon: <SiJavascript className="h-4 w-4" /> },
+      ],
+      liveUrl: "https://itspyarjanchettri.github.io/Typing-Speed-Test-Game/",
+
+      imageUrl: "/typing_test.png",
     },
     {
       title: "Clothing Store (Magnis)",

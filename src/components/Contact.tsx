@@ -14,8 +14,12 @@ const Contact = () => {
           friendly chat
         </p>
 
-        <Card className="p-8 bg-card border-2 border-border card-glow animate-scale-in">
-          <div className="flex flex-col gap-6">
+        <Card
+          className="relative p-8 bg-card border-2 border-border card-glow animate-scale-in
+            bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.03)_0px,rgba(255,255,255,0.03)_1px,transparent_1px,transparent_5px)]
+"
+        >
+          <div className="flex flex-col gap-6 relative z-10">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Mail className="h-6 w-6 text-primary" />
               <a
@@ -29,7 +33,7 @@ const Contact = () => {
             <div className="flex flex-wrap gap-4 justify-center mt-4">
               <Button variant="outline" size="lg" asChild className="group">
                 <a
-                  href="https://github.com/itspyarjanthapa "
+                  href="https://github.com/itspyarjanthapa"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -53,7 +57,8 @@ const Contact = () => {
         </Card>
 
         <p className="mt-12 text-sm text-muted-foreground animate-fade-in-delay">
-          © 2024 Pyarjan Thapa.
+          © {new Date().getFullYear()} Pyarjan Thapa. Built with love, caffeine,
+          and a lot of late-night debugging. Thanks for visiting!
         </p>
       </div>
     </section>
