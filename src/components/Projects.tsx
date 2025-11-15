@@ -65,17 +65,17 @@ const Projects = () => {
       imageUrl: "/typing_test.png",
     },
     {
-      title: "Clothing Store (Magnis)",
+      title: "Admn Dashboard (AdminPro)",
       description:
-        "An online clothing store (Magnis) built with React, JavaScript, and Tailwind CSS, offering a modern, responsive shopping experience.",
+        "A powerful admin dashboard to track users, products, orders, and analytics all in one place.",
       techStack: [
-        { name: "JavaScript", icon: <SiJavascript className="h-4 w-4" /> },
+        { name: "TypeScript", icon: <SiTypescript className="h-4 w-4" /> },
         { name: "React", icon: <FaReact className="h-4 w-4" /> },
         { name: "Tailwind", icon: <SiTailwindcss className="h-4 w-4" /> },
       ],
-      liveUrl: "https://magnis-store-co.vercel.app/",
+      liveUrl: "https://dashboard-nine-snowy-78.vercel.app/",
 
-      imageUrl: "/magnis.png",
+      imageUrl: "/adminpro.png",
     },
   ];
 
