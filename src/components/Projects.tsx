@@ -246,7 +246,7 @@ const Projects = () => {
         { name: "Express", icon: <SiExpress className="h-4 w-4" /> },
       ],
       liveUrl: "https://aivise-kappa.vercel.app/chat",
-      imageUrl: "/aivise.png",
+      imageUrl: "/Aivise.png",
     },
     {
       title: "Typing Speed Test",
