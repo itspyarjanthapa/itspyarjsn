@@ -231,7 +231,7 @@ const Projects = () => {
         { name: "Clerk", icon: <SiClerk className="h-4 w-4" /> },
         { name: "Express", icon: <SiExpress className="h-4 w-4" /> },
       ],
-      liveUrl: "https://aivise-kappa.vercel.app/chat",
+      liveUrl: "https://aivise-kappa.vercel.app/",
       imageUrl: "/Aivise.png",
     },
     {
