@@ -222,6 +222,19 @@ const ProjectCard = ({
 const Projects = () => {
   const projects = [
     {
+      title: "Resume Builder & AI Coach (Aivise)",
+      description:
+        "An AI-powered resume builder and chat app (Aivise) that helps users create resumes and get career coaching through interactive AI conversations, built with Next.js, Convex, Clerk, Node.js, and Express.",
+      techStack: [
+        { name: "Next.js", icon: <SiNextdotjs className="h-4 w-4" /> },
+        { name: "Node.js", icon: <FaNodeJs className="h-4 w-4" /> },
+        { name: "Clerk", icon: <SiClerk className="h-4 w-4" /> },
+        { name: "Express", icon: <SiExpress className="h-4 w-4" /> },
+      ],
+      liveUrl: "https://aivise-kappa.vercel.app/chat",
+      imageUrl: "/Aivise.png",
+    },
+    {
       title: "Vehicle Rental Platform (Vutungtung)",
       description:
         "A full-stack vehicle rental platform where users can book and manage vehicles by category with profile dashboards and secure payments via eSewa or cash on delivery.",
@@ -235,19 +248,7 @@ const Projects = () => {
       liveUrl: "https://vutungtung-rental.vercel.app/",
       imageUrl: "/vutungtung.png",
     },
-    {
-      title: "Resume Builder & AI Coach (Aivise)",
-      description:
-        "An AI-powered resume builder and chat app (Aivise) that helps users create resumes and get career coaching through interactive AI conversations, built with Next.js, Convex, Clerk, Node.js, and Express.",
-      techStack: [
-        { name: "Next.js", icon: <SiNextdotjs className="h-4 w-4" /> },
-        { name: "Node.js", icon: <FaNodeJs className="h-4 w-4" /> },
-        { name: "Clerk", icon: <SiClerk className="h-4 w-4" /> },
-        { name: "Express", icon: <SiExpress className="h-4 w-4" /> },
-      ],
-      liveUrl: "https://aivise-kappa.vercel.app/chat",
-      imageUrl: "/Aivise.png",
-    },
+
     {
       title: "Typing Speed Test",
       description:
