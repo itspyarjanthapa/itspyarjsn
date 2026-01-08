@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { ExternalLink, Github, Sparkles, ArrowUpRight } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Sparkles,
+  ArrowUpRight,
+  Download,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FaReact, FaNodeJs, FaCss3 } from "react-icons/fa";
 import {
@@ -11,7 +17,22 @@ import {
   SiJavascript,
   SiMysql,
   SiHtml5,
+  SiExpo,
 } from "react-icons/si";
+
+type Project = {
+  title: string;
+  description: string;
+  techStack: { name: string; icon: JSX.Element }[];
+  imageUrl: string;
+
+  liveUrl?: string; // ✅ optional
+  downloadUrl?: string; // ✅ optional
+};
+
+type ProjectCardProps = Project & {
+  index: number;
+};
 
 const ProjectCard = ({
   title,
@@ -20,7 +41,8 @@ const ProjectCard = ({
   liveUrl,
   imageUrl,
   index,
-}) => {
+  downloadUrl,
+}: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -55,17 +77,24 @@ const ProjectCard = ({
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         >
-          <Button
-            asChild
-            size="lg"
-            variant="secondary"
-            className="shadow-xl hover:scale-110 transition-transform"
-          >
-            <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-              View Project
-              <ArrowUpRight className="ml-2 h-5 w-5" />
-            </a>
-          </Button>
+          <div className="flex gap-3 mt-4">
+            {liveUrl && (
+              <Button asChild size="lg" variant="secondary">
+                <a href={liveUrl} target="_blank" rel="noopener noreferrer">
+                  View Project
+                  <ArrowUpRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+            )}
+
+            {downloadUrl && (
+              <Button asChild size="lg" variant="secondary">
+                <a href={downloadUrl} download>
+                  Download App
+                </a>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -97,15 +126,28 @@ const ProjectCard = ({
 
         {/* Footer Link */}
         <div className="pt-2 flex items-center justify-between">
-          <a
-            href={liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold text-primary hover:text-accent transition-colors flex items-center gap-1 group/link"
-          >
-            Visit Site
-            <ExternalLink className="h-4 w-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-          </a>
+          {liveUrl && (
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-primary hover:text-accent transition-colors flex items-center gap-1 group/link"
+            >
+              Visit Site
+              <ExternalLink className="h-4 w-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+            </a>
+          )}
+
+          {downloadUrl && (
+            <a
+              href={downloadUrl}
+              download
+              className="text-sm font-semibold text-primary hover:text-accent transition-colors flex items-center gap-1 group/link"
+            >
+              Download App{" "}
+              <Download className="h-5 w-5 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+            </a>
+          )}
         </div>
       </div>
 
@@ -116,7 +158,19 @@ const ProjectCard = ({
 };
 
 const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
+    {
+      title: "Who Knows The Word?",
+      description:
+        "A social deduction mobile game built with React Native where players identify the imposter who doesn’t know the word.",
+      techStack: [
+        { name: "Expo", icon: <SiExpo className="h-4 w-4" /> },
+        { name: "TypeScript", icon: <SiTypescript className="h-4 w-4" /> },
+        { name: "React Native", icon: <FaReact className="h-4 w-4" /> },
+      ],
+      downloadUrl: "/WhoKnowsTheWord.apk",
+      imageUrl: "/who.png",
+    },
     {
       title: "Resume Builder & AI Coach (Aivise)",
       description:
