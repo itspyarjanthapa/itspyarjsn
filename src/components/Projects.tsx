@@ -168,7 +168,7 @@ const Projects = () => {
         { name: "TypeScript", icon: <SiTypescript className="h-4 w-4" /> },
         { name: "React Native", icon: <FaReact className="h-4 w-4" /> },
       ],
-      downloadUrl: "/WhoKnowsTheWord.apk",
+      downloadUrl: "/downloads/who-knows-the-word.apk",
       imageUrl: "/who.png",
     },
     {
