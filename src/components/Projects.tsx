@@ -1,22 +1,16 @@
 import { useState } from "react";
 import {
-  ExternalLink,
-  Github,
   Sparkles,
-  ArrowUpRight,
-  Download,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { FaReact, FaNodeJs, FaCss3 } from "react-icons/fa";
+import ProjectCard from "@/components/ProjectCard";
+import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiTypescript,
-  SiTailwindcss,
   SiNextdotjs,
   SiExpress,
   SiClerk,
   SiJavascript,
   SiMysql,
-  SiHtml5,
   SiExpo,
 } from "react-icons/si";
 
@@ -28,133 +22,6 @@ type Project = {
 
   liveUrl?: string; // ✅ optional
   downloadUrl?: string; // ✅ optional
-};
-
-type ProjectCardProps = Project & {
-  index: number;
-};
-
-const ProjectCard = ({
-  title,
-  description,
-  techStack,
-  liveUrl,
-  imageUrl,
-  index,
-  downloadUrl,
-}: ProjectCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div
-      className="group relative bg-background/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      style={{
-        animationDelay: `${index * 0.1}s`,
-      }}
-    >
-      {/* Image Container */}
-      <div className="relative h-56 overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60"></div>
-
-        {/* Floating Badge */}
-        <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-primary/30 flex items-center gap-2">
-          <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-          <span className="text-xs font-semibold text-primary">Live</span>
-        </div>
-
-        {/* Hover Overlay */}
-        <div
-          className={`absolute inset-0 bg-primary/90 backdrop-blur-sm transition-opacity duration-500 flex items-center justify-center ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <div className="flex gap-3 mt-4">
-            {liveUrl && (
-              <Button asChild size="lg" variant="secondary">
-                <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-                  View Project
-                  <ArrowUpRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-            )}
-
-            {downloadUrl && (
-              <Button asChild size="lg" variant="secondary">
-                <a href={downloadUrl} download>
-                  Download App
-                </a>
-              </Button>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-6 space-y-4">
-        {/* Title */}
-        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
-          {title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
-          {description}
-        </p>
-
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2">
-          {techStack.map((tech, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-colors"
-              title={tech.name}
-            >
-              {tech.icon}
-              <span className="text-xs font-medium">{tech.name}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer Link */}
-        <div className="pt-2 flex items-center justify-between">
-          {liveUrl && (
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-primary hover:text-accent transition-colors flex items-center gap-1 group/link"
-            >
-              Visit Site
-              <ExternalLink className="h-4 w-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-            </a>
-          )}
-
-          {downloadUrl && (
-            <a
-              href={downloadUrl}
-              download
-              className="text-sm font-semibold text-primary hover:text-accent transition-colors flex items-center gap-1 group/link"
-            >
-              Download App{" "}
-              <Download className="h-5 w-5 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-            </a>
-          )}
-        </div>
-      </div>
-
-      {/* Corner Accent */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-    </div>
-  );
 };
 
 const Projects = () => {
@@ -305,6 +172,7 @@ const Projects = () => {
         }
         .animate-fade-in-up {
           animation: fade-in-up 0.8s ease-out forwards;
+          animation-fill-mode: both;
         }
         .animate-gradient {
           background-size: 200% 200%;
