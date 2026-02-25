@@ -38,6 +38,9 @@ const GlobalImageCursor = () => {
             if (target.tagName === 'IMG') {
                 const img = target as HTMLImageElement;
 
+                // Check for exclusion attribute
+                if (img.getAttribute('data-no-cursor') === 'true') return;
+
                 // Filter out small icons/pixels
                 if (img.src && img.width > 40 && img.height > 40) {
                     const rect = img.getBoundingClientRect();
@@ -84,8 +87,6 @@ const GlobalImageCursor = () => {
                     animate={{
                         opacity: 1,
                         scale: 1,
-                        x: smoothX, // Framer motion will handle the motion value subscription
-                        y: smoothY,
                         transition: { type: "spring", damping: 20, stiffness: 300 }
                     }}
                     exit={{
@@ -94,6 +95,8 @@ const GlobalImageCursor = () => {
                         transition: { duration: 0.2 }
                     }}
                     style={{
+                        x: smoothX,
+                        y: smoothY,
                         translateX: "-0%", // Align top-left to pointer to match offset logic
                         translateY: "-0%",
                         rotateX,

@@ -1,276 +1,257 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import {
-  Github,
-  Linkedin,
-  Mail,
-  Code2,
+  ArrowUpRight,
+  Plus,
   Sparkles,
-  Terminal,
+  Layout,
+  MousePointer2,
+  Layers,
+  Palette,
   Zap,
-  BookOpen,
-  ArrowRight,
-  Circle,
+  Box,
+  Brain,
+  Monitor,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+
+const carouselItems = [
+  {
+    id: 1,
+    tag: "UI Project",
+    title: "Modern dashboard interface",
+    description:
+      "A clean, modular dashboard designed with focus on clarity and visual hierarchy.",
+  },
+  {
+    id: 2,
+    tag: "UX Project",
+    title: "End-to-end user flow redesign",
+    description:
+      "Streamlined navigation and improved task flow for better usability.",
+  },
+  {
+    id: 3,
+    tag: "Design System",
+    title: "Component-driven design system",
+    description:
+      "A scalable UI library built with consistent spacing, color, and motion patterns.",
+  },
+  {
+    id: 4,
+    tag: "Visual Concept",
+    title: "Gradient-rich visual exploration",
+    description:
+      "Modern soft gradients, depth layers, and vibrant color experimentation.",
+  },
+  {
+    id: 5,
+    tag: "Interaction Design",
+    title: "Micro-interaction motion work",
+    description:
+      "Smooth transitions and feedback animations for meaningful interactions.",
+  },
+  {
+    id: 6,
+    tag: "Product UI",
+    title: "Minimalist product interface",
+    description:
+      "A clean, distraction-free layout focused on simplicity and usability.",
+  },
+  {
+    id: 7,
+    tag: "Creative Concept",
+    title: "Experimental UI concepts",
+    description:
+      "Unique shapes, abstract layouts, and expressive visual direction.",
+  },
+  {
+    id: 8,
+    tag: "Web App UI",
+    title: "High-fidelity web app screens",
+    description:
+      "Polished layouts with precise typography and component styling.",
+  },
+];
 
 const Hero = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollTo = useSmoothScroll();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % carouselItems.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center px-6 lg:px-12 py-20 overflow-hidden bg-background">
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-
-      {/* Gradient Orbs */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-      <div
-        className="absolute bottom-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse"
-        style={{ animationDelay: "1s" }}
-      ></div>
-
-      <div className="max-w-7xl mx-auto w-full relative z-10">
-        {/* New Layout: Center-aligned with side decorations */}
-        <div className="flex flex-col items-center text-center space-y-12">
-          {/* Profile Image at Top */}
-          <div className="relative">
-            <div className="relative w-48 h-48 lg:w-56 lg:h-56">
-              {/* Animated Ring */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-accent to-primary rounded-full animate-spin-slow opacity-75 blur-sm"></div>
-
-              {/* Image Container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-2xl">
-                <img
-                  src="/profile.jpg"
-                  alt="Pyarjan Thapa"
-                  className="w-full h-full object-cover"
+    <section className="relative py-10 px-6 lg:px-12 bg-background transition-colors duration-500 overflow-hidden selection:bg-primary/30">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          {/* Main Mesh Gradient Card */}
+          <div className="lg:col-span-6 relative group">
+            <div className="relative h-[400px] lg:h-[500px] rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-xl transition-colors duration-500">
+              {/* Mesh Gradient Background */}
+              <div className="absolute inset-0 bg-[#3b82f6]">
+                <div
+                  className="absolute inset-0 opacity-70 mix-blend-overlay animate-pulse"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 20% 30%, #8b5cf6 0%, transparent 50%), radial-gradient(circle at 80% 70%, #06b6d4 0%, transparent 50%), radial-gradient(circle at 50% 50%, #3b82f6 0%, transparent 70%)",
+                  }}
+                />
+                <div
+                  className="absolute inset-0 opacity-40 animate-slow-pan"
+                  style={{
+                    backgroundImage:
+                      "url('https://grainy-gradients.vercel.app/noise.svg')",
+                    backgroundSize: "200px",
+                    filter: "contrast(150%) brightness(1000%)",
+                  }}
                 />
               </div>
 
-              {/* Floating Dots */}
-              <Circle className="absolute -top-2 -right-2 h-6 w-6 text-primary fill-primary animate-bounce" />
-              <Circle
-                className="absolute -bottom-2 -left-2 h-5 w-5 text-accent fill-accent animate-bounce"
-                style={{ animationDelay: "0.5s" }}
-              />
-            </div>
-
-            {/* Status Badge */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background border border-primary/30 shadow-lg">
-              <div className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              {/* Text Overlay on Canvas */}
+              <div className="absolute bottom-10 left-6 right-6">
+                <div className="bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl p-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+                    Equal parts creative developer & designer
+                  </h2>
+                </div>
               </div>
-              <span className="text-xs font-medium text-foreground">
-                Open to work
-              </span>
+
+              {/* Floating element in mesh card */}
+              <div className="absolute top-6 left-6">
+                <div className="bg-background/10 backdrop-blur-md rounded-full px-3 py-1.5 border border-foreground/20 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-foreground text-[10px] font-medium uppercase tracking-wider">
+                    Available for work
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Text Content */}
-          <div className="space-y-6 max-w-4xl">
-            {/* Greeting */}
-            <div className="flex items-center justify-center gap-2 text-lg text-muted-foreground">
-              <Terminal className="h-5 w-5 text-primary" />
-              <span>Hello, I'm</span>
-            </div>
+          {/* Circular Carousel Field */}
+          <div className="lg:col-span-3 relative h-[400px] lg:h-[500px]">
+            <div className="w-full h-full aspect-square rounded-[2.5rem] lg:rounded-full border border-dashed border-foreground/20 flex flex-col items-center justify-center group hover:border-primary/50 transition-colors duration-500 bg-background/20 backdrop-blur-sm overflow-hidden p-6">
+              <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 1.1, y: -10 }}
+                    transition={{ duration: 0.6, ease: "circOut" }}
+                    className="flex flex-col items-center text-center px-2"
+                  >
+                    <div className="text-[9px] text-primary font-bold uppercase tracking-[0.2em] mb-2 px-2 py-0.5 bg-primary/10 rounded-full">
+                      {carouselItems[currentIndex].tag}
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground mb-2 leading-tight tracking-tight">
+                      {carouselItems[currentIndex].title}
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground leading-relaxed max-w-[160px]">
+                      {carouselItems[currentIndex].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
 
-            {/* Name */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight">
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-                Pyarjan Thapa
-              </span>
-            </h1>
+                {/* Pagination Dots inside Circle */}
+                <div className="absolute bottom-6 flex gap-1">
+                  {carouselItems.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentIndex(i)}
+                      className={cn(
+                        "w-1 h-1 rounded-full transition-all duration-300",
+                        currentIndex === i
+                          ? "w-3 bg-primary"
+                          : "bg-foreground/20 hover:bg-foreground/40",
+                      )}
+                    />
+                  ))}
+                </div>
+              </div>
 
-            {/* Title with animated underline */}
-            <div className="inline-flex flex-col items-center gap-2">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground flex items-center gap-3">
-                <Code2 className="h-7 w-7 text-primary" />
-                Fullstack Developer
-                <Zap className="h-7 w-7 text-accent animate-pulse" />
-              </h2>
-              <div className="h-1 w-64 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
-            </div>
-
-            {/* Description */}
-            <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Crafting{" "}
-              <span className="text-primary font-semibold">
-                elegant solutions
-              </span>{" "}
-              through clean code. Building{" "}
-              <span className="text-accent font-semibold">
-                high-performance applications
-              </span>{" "}
-              that make a difference.
-            </p>
-
-            {/* Tech Stack */}
-            <div className="flex flex-wrap justify-center gap-3 pt-4">
-              {[
-                "React",
-                "Next.js",
-                "Node.js",
-                "TypeScript",
-                "Tailwind CSS",
-                "MongoDB",
-              ].map((tech, index) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 text-sm font-medium hover:scale-105 transition-transform cursor-default backdrop-blur-sm"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {tech}
-                </span>
-              ))}
+              {/* Spinning Ring */}
+              <div className="absolute inset-4 lg:inset-0 rounded-full border-t-2 border-primary/40 animate-spin-slow opacity-30 group-hover:opacity-100 transition-opacity pointer-events-none" />
             </div>
           </div>
 
-          {/* CTA Buttons Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 w-full max-w-3xl pt-6">
-            <Button
-              asChild
-              size="lg"
-              className="col-span-2 lg:col-span-2 group shadow-xl hover:shadow-2xl bg-gradient-to-r from-primary to-accent hover:scale-105 transition-all"
-            >
-              <a
-                href="mailto:itspyarjanchhetri@gmail.com"
-                className="flex items-center justify-center"
-              >
-                <Mail className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                Get in Touch
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
+          {/* Project Highlight Card */}
+          <div className="lg:col-span-3 relative h-[400px] lg:h-[500px]">
+            <div className="w-full h-full bg-foreground/5 dark:bg-foreground/10 rounded-[2.5rem] p-6 lg:p-8 relative overflow-hidden group border border-foreground/10 flex flex-col justify-between transition-all duration-500 hover:bg-foreground/[0.07] dark:hover:bg-foreground/[0.12]">
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="flex items-center gap-2">
+                    <div className="p-1.5 bg-primary/10 rounded-lg text-primary">
+                      <Plus className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">
+                      Portfolio
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => scrollTo("#projects")}
+                    className="w-8 h-8 rounded-full bg-background border border-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
+                  >
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                </div>
 
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="hover:bg-primary/10 hover:border-primary hover:text-primary transition-all"
-            >
-              <a
-                href="https://github.com/itspyarjanthapa"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="lg:mr-2 h-5 w-5" />
-                <span className="hidden lg:inline">GitHub</span>
-              </a>
-            </Button>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold text-foreground mb-4">
+                    Projects I've Done
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {["Dashboard", "SaaS", "Mobile", "Web App"].map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[9px] font-medium px-2 py-0.5 bg-foreground/5 rounded-full border border-foreground/10"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="hover:bg-accent/10 hover:border-accent hover:text-accent transition-all"
-            >
-              <a
-                href="https://www.linkedin.com/in/pyarjanthapa"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin className="lg:mr-2 h-5 w-5" />
-                <span className="hidden lg:inline">LinkedIn</span>
-              </a>
-            </Button>
+                <div className="mt-auto">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Explore a curated selection of my latest work, from concept
+                    to high-fidelity implementation.
+                  </p>
+                </div>
+              </div>
 
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="hover:bg-primary/10 hover:border-primary hover:text-primary transition-all group"
-            >
-              <a
-                href="https://blogs.pyarjanthapa.com.np"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <BookOpen className="lg:mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                <span className="hidden lg:inline">Blog</span>
-              </a>
-            </Button>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-3 gap-6 pt-8 max-w-2xl w-full">
-            <div className="bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 rounded-2xl p-6 backdrop-blur-sm hover:scale-105 transition-transform">
-              <Code2 className="h-8 w-8 text-primary mb-2 mx-auto" />
-              <p className="text-3xl font-bold text-foreground">5+</p>
-              <p className="text-sm text-muted-foreground">Projects</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-accent/10 to-transparent border border-accent/20 rounded-2xl p-6 backdrop-blur-sm hover:scale-105 transition-transform">
-              <Sparkles className="h-8 w-8 text-accent mb-2 mx-auto" />
-              <p className="text-3xl font-bold text-foreground">2+</p>
-              <p className="text-sm text-muted-foreground">Years Exp</p>
-            </div>
-
-            <div className="bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 rounded-2xl p-6 backdrop-blur-sm hover:scale-105 transition-transform">
-              <Terminal className="h-8 w-8 text-primary mb-2 mx-auto" />
-              <p className="text-3xl font-bold text-foreground">100%</p>
-              <p className="text-sm text-muted-foreground">Passion</p>
+              {/* Decorative elements for card */}
+              <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
+              <div className="absolute -top-10 -left-10 w-24 h-24 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-colors" />
             </div>
           </div>
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-12 hidden xl:block">
-          <div className="w-24 h-24 border-2 border-primary/30 rounded-lg rotate-45 animate-spin-slow"></div>
-        </div>
-        <div className="absolute bottom-1/4 right-12 hidden xl:block">
-          <div className="w-20 h-20 border-2 border-accent/30 rotate-12 animate-float"></div>
-        </div>
-
-        {/* Code Brackets */}
-        <div className="absolute top-20 left-6 text-6xl font-bold text-primary/20 hidden lg:block animate-pulse">
-          {"</>"}
-        </div>
-        <div
-          className="absolute bottom-20 right-6 text-6xl font-bold text-accent/20 hidden lg:block animate-pulse"
-          style={{ animationDelay: "0.5s" }}
-        >
-          {"{}"}
         </div>
       </div>
 
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        .bg-grid-pattern {
-          background-image: 
-            linear-gradient(to right, currentColor 1px, transparent 1px),
-            linear-gradient(to bottom, currentColor 1px, transparent 1px);
-          background-size: 40px 40px;
+      <style>{`
+        @keyframes slow-pan {
+          0% { background-position: 0% 0%; }
+          100% { background-position: 100% 100%; }
         }
-        
+        .animate-slow-pan {
+          animation: slow-pan 20s linear infinite alternate;
+        }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(12deg); }
-          50% { transform: translateY(-20px) rotate(12deg); }
-        }
-        
-        @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        
         .animate-spin-slow {
-          animation: spin-slow 15s linear infinite;
+          animation: spin-slow 12s linear infinite;
         }
-        
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-        
-        .animate-gradient {
-          animation: gradient 3s ease infinite;
-        }
-      `,
-        }}
-      />
+      `}</style>
     </section>
   );
 };

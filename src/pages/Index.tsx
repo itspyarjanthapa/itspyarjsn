@@ -1,3 +1,4 @@
+import ProfileHeader from "@/components/ProfileHeader";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import TechStack from "@/components/TechStack";
@@ -7,6 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Hero />
+      <ProfileHeader />
       <Projects />
       <TechStack />
       <Contact />

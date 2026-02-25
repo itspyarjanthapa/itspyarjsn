@@ -6,9 +6,9 @@ interface ProjectCardProps {
   title: string;
   description: string;
   techStack: { name: string; icon: React.ReactNode }[];
-  githubUrl?: string; // Optional
-  liveUrl?: string; // Optional
-  downloadUrl?: string; // Optional
+  githubUrl?: string;
+  liveUrl?: string;
+  downloadUrl?: string;
   imageUrl: string;
   index: number;
 }
