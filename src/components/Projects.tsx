@@ -22,7 +22,7 @@ const Projects = () => {
       title: "Who Knows The Word?",
       year: "2025",
       description: "Social Mobile Game",
-      link: "#",
+      link: "https://whoknowstheword.vercel.app/",
     },
     {
       title: "Vutungtung",
