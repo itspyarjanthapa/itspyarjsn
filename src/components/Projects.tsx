@@ -13,22 +13,22 @@ type Project = {
 const Projects = () => {
   const projects: Project[] = [
     {
-      title: "LaunchCV",
-      year: "2024",
+      title: "BuildMyVita",
+      year: "2025",
       description: "Resume Builder",
-      link: "https://v1-launchcv.vercel.app/",
+      link: "https://buildmyvita.com",
     },
     {
       title: "Who Knows The Word?",
       year: "2025",
       description: "Social Mobile Game",
-      link: "https://whoknowstheword.vercel.app/",
+      link: "https://whoknowstheword.vercel.app",
     },
     {
       title: "Vutungtung",
       year: "2025",
       description: "Vehicle Rental System",
-      link: "https://vutungtung-rental.vercel.app/",
+      link: "https://vutungtung-rental.vercel.app",
     }
   ];
 
