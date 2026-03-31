@@ -52,13 +52,13 @@ const ProfileHeader = () => {
                     <div className="hidden lg:block">
                         <div className="relative p-12 rounded-[3rem] border border-foreground/5 bg-foreground/5 backdrop-blur-3xl overflow-hidden group hover:border-primary/20 transition-colors">
                             <div className="absolute top-0 right-0 p-6">
-                                <ArrowUpRight className="text-foreground/20 group-hover:text-primary transition-colors w-8 h-8" />
+                                <ArrowUpRight className="dark:text-foreground/20 text-muted-foreground/60 group-hover:text-primary transition-colors w-8 h-8" />
                             </div>
                             <div className="relative z-10 flex flex-col gap-2">
                                 <span className="text-primary text-[10px] font-mono uppercase tracking-[0.3em]">Quick Links</span>
-                                <a href="https://blogs.pyarjanthapa.com.np/" target="_blank" className="text-2xl font-bold text-foreground/40 hover:text-foreground transition-colors">Blog</a>
-                                <a href="https://github.com/itspyarjanthapa" target="_blank" className="text-2xl font-bold text-foreground/40 hover:text-foreground transition-colors">GitHub</a>
-                                <a href="https://www.linkedin.com/in/pyarjanthapa" target="_blank" className="text-2xl font-bold text-foreground/40 hover:text-foreground transition-colors">LinkedIn</a>
+                                <a href="https://blogs.pyarjanthapa.com.np/" target="_blank" className="text-2xl font-bold dark:text-foreground/40 text-foreground/30 hover:text-foreground transition-colors">Blog</a>
+                                <a href="https://github.com/itspyarjanthapa" target="_blank" className="text-2xl font-bold dark:text-foreground/40 text-foreground/30 hover:text-foreground transition-colors">GitHub</a>
+                                <a href="https://www.linkedin.com/in/pyarjanthapa" target="_blank" className="text-2xl font-bold dark:text-foreground/40 text-foreground/30 hover:text-foreground transition-colors">LinkedIn</a>
                             </div>
                         </div>
                     </div>

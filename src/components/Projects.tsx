@@ -36,7 +36,7 @@ const Projects = () => {
     <section id="projects" className="bg-background py-32 px-6 lg:px-12 transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto">
         <div className="flex flex-col gap-2 mb-20">
-          <span className="text-muted-foreground/30 text-xs font-mono tracking-[0.3em] uppercase">Selected Works</span>
+          <span className="dark:text-muted-foreground/30 text-muted-foreground font-semibold text-xs font-mono tracking-[0.3em] uppercase">Selected Works</span>
           <div className="h-px w-20 bg-primary/40" />
         </div>
 
@@ -50,8 +50,8 @@ const Projects = () => {
               className="group relative flex items-center justify-between py-10 lg:py-16 border-b border-foreground/10 hover:border-foreground/30 transition-colors duration-500"
             >
               <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground/40 text-xs font-mono uppercase tracking-widest">{project.year} // {project.description}</span>
-                <h3 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground/40 group-hover:text-foreground transition-all duration-700 ease-out translate-x-0 group-hover:translate-x-4">
+                <span className="dark:text-muted-foreground/40 text-muted-foreground font-medium text-xs font-mono uppercase tracking-widest">{project.year} // {project.description}</span>
+                <h3 className="text-5xl md:text-7xl lg:text-8xl font-black dark:text-foreground/40 text-foreground/20 group-hover:text-foreground transition-all duration-700 ease-out translate-x-0 group-hover:translate-x-4">
                   {project.title}
                 </h3>
               </div>

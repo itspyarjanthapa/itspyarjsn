@@ -32,8 +32,8 @@ const Contact = () => {
               <h2 className="text-5xl lg:text-7xl font-black text-white leading-tight mb-8">
                 Wanna create something awesome together?
               </h2>
-              <p className="text-white/80 text-sm lg:text-base font-medium opacity-60">
-                Don't like fancy buttons? Reach out at <span className="underline decoration-white/30 hover:decoration-white transition-all cursor-pointer">itspyarjanchhetri@gmail.com</span>
+              <p className="text-white/90 text-sm lg:text-base font-medium">
+                Don't like fancy buttons? Reach out at <span className="underline decoration-white/50 hover:decoration-white transition-all cursor-pointer">itspyarjanchhetri@gmail.com</span>
               </p>
             </div>
 
@@ -53,7 +53,7 @@ const Contact = () => {
         </div>
 
         {/* Final Footer */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-t border-foreground/5 pt-12 text-muted-foreground/20 font-mono text-xs mb-12 uppercase tracking-widest">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-t border-foreground/5 pt-12 dark:text-muted-foreground/20 text-muted-foreground font-mono text-xs mb-12 uppercase tracking-widest">
           <div>
             © {new Date().getFullYear()} Pyarjan Thapa - All rights reserved
           </div>

@@ -77,10 +77,10 @@ const ProjectCard = ({
       {/* Content Section */}
       <div className="relative z-20 p-6 flex-1 flex flex-col space-y-4">
         <div>
-          <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 group-hover:from-primary group-hover:to-accent transition-all duration-300">
+          <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r dark:from-foreground dark:to-foreground/70 from-foreground to-foreground transition-all duration-300 group-hover:from-primary group-hover:to-accent">
             {title}
           </h3>
-          <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-3 group-hover:text-foreground/80 transition-colors">
+          <p className="mt-2 text-sm dark:text-muted-foreground text-muted-foreground/80 leading-relaxed line-clamp-3 group-hover:text-foreground transition-colors">
             {description}
           </p>
         </div>
@@ -90,7 +90,7 @@ const ProjectCard = ({
           {techStack.map((tech, i) => (
             <div
               key={i}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary/50 border border-white/5 text-xs font-medium text-muted-foreground group-hover:border-primary/20 group-hover:bg-primary/5 group-hover:text-primary transition-all delay-[50ms]"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary/50 border border-foreground/5 text-xs font-medium dark:text-muted-foreground text-muted-foreground group-hover:border-primary/20 group-hover:bg-primary/5 group-hover:text-primary transition-all delay-[50ms]"
               style={{
                 borderRadius: getOrganicShape(tech.name, i)
               }}

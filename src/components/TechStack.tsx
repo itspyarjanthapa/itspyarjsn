@@ -39,7 +39,7 @@ const TechStack = () => {
     <section id="experience" className="bg-background py-32 px-6 lg:px-12 relative overflow-hidden transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto relative z-10">
         <div className="flex flex-col gap-2 mb-20 text-center lg:text-left">
-          <span className="text-muted-foreground/30 text-xs font-mono tracking-[0.3em] uppercase">Experience & Work Experience</span>
+          <span className="dark:text-muted-foreground/30 text-muted-foreground/70 text-xs font-mono tracking-[0.3em] uppercase">Experience & Work Experience</span>
           <div className="h-px w-20 bg-primary/40 mx-auto lg:mx-0" />
         </div>
 
@@ -50,12 +50,12 @@ const TechStack = () => {
               className="group relative p-8 lg:p-10 rounded-[2.5rem] border border-foreground/5 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-all duration-500 flex flex-col gap-6"
             >
               <div className="flex items-start justify-between">
-                <span className="text-4xl font-black text-foreground/10 group-hover:text-primary/20 transition-colors font-mono">
+                <span className="text-4xl font-black dark:text-foreground/10 text-foreground/40 group-hover:dark:text-primary/20 group-hover:text-primary/60 transition-colors font-mono">
                   {exp.id}
                 </span>
                 <div className="flex flex-wrap gap-2 justify-end max-w-[200px]">
                   {exp.tags.map((tag, i) => (
-                    <span key={i} className="text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-foreground/10 text-muted-foreground/60">
+                    <span key={i} className="text-[10px] uppercase tracking-widest px-2 py-1 rounded-full border border-foreground/10 dark:text-muted-foreground/60 text-muted-foreground">
                       {tag}
                     </span>
                   ))}
@@ -66,7 +66,7 @@ const TechStack = () => {
                 <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 group-hover:translate-x-2 transition-transform duration-500">
                   {exp.title}
                 </h3>
-                <p className="text-muted-foreground/70 text-sm lg:text-base leading-relaxed">
+                <p className="dark:text-muted-foreground/70 text-muted-foreground text-sm lg:text-base leading-relaxed">
                   {exp.description}
                 </p>
               </div>

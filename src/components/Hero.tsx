@@ -4,97 +4,48 @@ import { cn } from "@/lib/utils";
 import {
   ArrowUpRight,
   Plus,
-  Sparkles,
-  Layout,
+  Zap,
   MousePointer2,
   Layers,
-  Palette,
-  Zap,
-  Box,
-  Brain,
+  Sparkles,
+  Github,
   Monitor,
 } from "lucide-react";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
-const carouselItems = [
-  {
-    id: 1,
-    tag: "UI Project",
-    title: "Modern dashboard interface",
-    description:
-      "A clean, modular dashboard designed with focus on clarity and visual hierarchy.",
-  },
-  {
-    id: 2,
-    tag: "UX Project",
-    title: "End-to-end user flow redesign",
-    description:
-      "Streamlined navigation and improved task flow for better usability.",
-  },
-  {
-    id: 3,
-    tag: "Design System",
-    title: "Component-driven design system",
-    description:
-      "A scalable UI library built with consistent spacing, color, and motion patterns.",
-  },
-  {
-    id: 4,
-    tag: "Visual Concept",
-    title: "Gradient-rich visual exploration",
-    description:
-      "Modern soft gradients, depth layers, and vibrant color experimentation.",
-  },
-  {
-    id: 5,
-    tag: "Interaction Design",
-    title: "Micro-interaction motion work",
-    description:
-      "Smooth transitions and feedback animations for meaningful interactions.",
-  },
-  {
-    id: 6,
-    tag: "Product UI",
-    title: "Minimalist product interface",
-    description:
-      "A clean, distraction-free layout focused on simplicity and usability.",
-  },
-  {
-    id: 7,
-    tag: "Creative Concept",
-    title: "Experimental UI concepts",
-    description:
-      "Unique shapes, abstract layouts, and expressive visual direction.",
-  },
-  {
-    id: 8,
-    tag: "Web App UI",
-    title: "High-fidelity web app screens",
-    description:
-      "Polished layouts with precise typography and component styling.",
-  },
-];
-
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const scrollTo = useSmoothScroll();
+  const spotlightRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % carouselItems.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
+  const springConfig = { damping: 25, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const rotateX = useTransform(smoothY, [-250, 250], [10, -10]);
+  const rotateY = useTransform(smoothX, [-250, 250], [-10, 10]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!spotlightRef.current) return;
+    const rect = spotlightRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
 
   return (
     <section className="relative py-10 px-6 lg:px-12 bg-background transition-colors duration-500 overflow-hidden selection:bg-primary/30">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Main Mesh Gradient Card */}
+
+          {/* Main Mesh Gradient Card - Col 1 to 6 */}
           <div className="lg:col-span-6 relative group">
-            <div className="relative h-[400px] lg:h-[500px] rounded-[2.5rem] overflow-hidden border border-foreground/10 shadow-xl transition-colors duration-500">
+            <div className="relative h-[450px] lg:h-[550px] rounded-[3rem] overflow-hidden border border-foreground/10 shadow-xl transition-colors duration-500">
               {/* Mesh Gradient Background */}
               <div className="absolute inset-0 bg-[#3b82f6]">
                 <div
@@ -115,123 +66,150 @@ const Hero = () => {
                 />
               </div>
 
-              {/* Text Overlay on Canvas */}
-              <div className="absolute bottom-10 left-6 right-6">
-                <div className="bg-background/80 backdrop-blur-xl border border-foreground/10 rounded-2xl p-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  <h2 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
-                    Equal parts creative developer & designer
-                  </h2>
-                </div>
-              </div>
-
-              {/* Floating element in mesh card */}
-              <div className="absolute top-6 left-6">
-                <div className="bg-background/10 backdrop-blur-md rounded-full px-3 py-1.5 border border-foreground/20 flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-foreground text-[10px] font-medium uppercase tracking-wider">
-                    Available for work
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Circular Carousel Field */}
-          <div className="lg:col-span-3 relative h-[400px] lg:h-[500px]">
-            <div className="w-full h-full aspect-square rounded-[2.5rem] lg:rounded-full border border-dashed border-foreground/20 flex flex-col items-center justify-center group hover:border-primary/50 transition-colors duration-500 bg-background/20 backdrop-blur-sm overflow-hidden p-6">
-              <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 1.1, y: -10 }}
-                    transition={{ duration: 0.6, ease: "circOut" }}
-                    className="flex flex-col items-center text-center px-2"
-                  >
-                    <div className="text-[9px] text-primary font-bold uppercase tracking-[0.2em] mb-2 px-2 py-0.5 bg-primary/10 rounded-full">
-                      {carouselItems[currentIndex].tag}
-                    </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2 leading-tight tracking-tight">
-                      {carouselItems[currentIndex].title}
-                    </h3>
-                    <p className="text-[10px] text-muted-foreground leading-relaxed max-w-[160px]">
-                      {carouselItems[currentIndex].description}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Pagination Dots inside Circle */}
-                <div className="absolute bottom-6 flex gap-1">
-                  {carouselItems.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentIndex(i)}
-                      className={cn(
-                        "w-1 h-1 rounded-full transition-all duration-300",
-                        currentIndex === i
-                          ? "w-3 bg-primary"
-                          : "bg-foreground/20 hover:bg-foreground/40",
-                      )}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Spinning Ring */}
-              <div className="absolute inset-4 lg:inset-0 rounded-full border-t-2 border-primary/40 animate-spin-slow opacity-30 group-hover:opacity-100 transition-opacity pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Project Highlight Card */}
-          <div className="lg:col-span-3 relative h-[400px] lg:h-[500px]">
-            <div className="w-full h-full bg-foreground/5 dark:bg-foreground/10 rounded-[2.5rem] p-6 lg:p-8 relative overflow-hidden group border border-foreground/10 flex flex-col justify-between transition-all duration-500 hover:bg-foreground/[0.07] dark:hover:bg-foreground/[0.12]">
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1.5 bg-primary/10 rounded-lg text-primary">
-                      <Plus className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">
-                      Portfolio
+              {/* Text Overlay */}
+              <div className="absolute inset-0 flex flex-col justify-between p-10">
+                <div className="flex justify-between items-start">
+                  <div className="bg-background/10 backdrop-blur-md rounded-full px-4 py-2 border border-foreground/20 flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-white text-[10px] font-bold uppercase tracking-widest">
+                      Available for projects
                     </span>
                   </div>
-                  <button
-                    onClick={() => scrollTo("#projects")}
-                    className="w-8 h-8 rounded-full bg-background border border-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
                 </div>
 
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-foreground mb-4">
-                    Projects I've Done
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {["Dashboard", "SaaS", "Mobile", "Web App"].map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[9px] font-medium px-2 py-0.5 bg-foreground/5 rounded-full border border-foreground/10"
-                      >
-                        {tag}
+                <div className="bg-background/80 backdrop-blur-2xl border border-foreground/10 rounded-[2.5rem] p-8 lg:p-10 transform transition-all duration-700 group-hover:-translate-y-2">
+                  <h1 className="text-4xl lg:text-5xl font-black text-foreground leading-tight tracking-tight">
+                    Engineering <span className="text-primary underline decoration-primary/30">digital</span> experiences that feel like magic.
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE BENTO - Col 7 to 12 */}
+          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+            {/* RIGHT SIDE BENTO - Col 7 to 12 - NOW UNIFIED */}
+            <div className="lg:col-span-6">
+              <motion.div
+                ref={spotlightRef}
+                onMouseMove={handleMouseMove}
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => {
+                  setIsHovering(false);
+                  mouseX.set(0);
+                  mouseY.set(0);
+                }}
+                style={{
+                  rotateX,
+                  rotateY,
+                  transformStyle: "preserve-3d",
+                }}
+                className="relative h-auto lg:h-[550px] bg-foreground/5 dark:bg-foreground/10 rounded-[3rem] p-8 lg:p-12 overflow-visible lg:overflow-hidden group border border-foreground/10 transition-all duration-500 hover:border-primary/40 shadow-2xl flex flex-col lg:flex-row gap-12 lg:gap-12"
+              >
+                {/* Spotlight Effect */}
+                <div
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                  style={{
+                    background: isHovering
+                      ? `radial-gradient(800px circle at ${smoothX.get() + 300}px ${smoothY.get() + 250}px, hsl(var(--primary)/0.1), transparent 80%)`
+                      : ""
+                  }}
+                />
+
+                {/* Left Side of Unified Card: The Craft */}
+                <div className="flex-1 flex flex-col justify-between relative z-10" style={{ transform: "translateZ(40px)" }}>
+                  <div>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-3 bg-primary/10 rounded-2xl text-primary transform group-hover:rotate-12 transition-transform duration-500">
+                        <Zap className="w-6 h-6" />
+                      </div>
+                      <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em]">
+                        Design & Dev
                       </span>
-                    ))}
+                    </div>
+                    <h2 className="text-3xl lg:text-4xl font-black text-foreground mb-4">
+                      The Craft
+                    </h2>
+                    <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+                      Merging technical precision with creative intuition to build software that is both robust and beautiful.
+                    </p>
+                  </div>
+
+                  {/* Animated UI Elements Bridge */}
+                  <div className="relative h-24 mt-6 overflow-hidden rounded-2xl border border-foreground/5 bg-foreground/5 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center space-x-2">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{
+                            height: [15, 50, 25, 60, 15],
+                            opacity: [0.3, 0.6, 0.3]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 0.15,
+                            ease: "easeInOut",
+                          }}
+                          className="w-1 rounded-full bg-primary"
+                        />
+                      ))}
+                    </div>
+
                   </div>
                 </div>
 
-                <div className="mt-auto">
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Explore a curated selection of my latest work, from concept
-                    to high-fidelity implementation.
-                  </p>
-                </div>
-              </div>
+                {/* Right Side of Unified Card: The Showcase */}
+                <div className="flex-1 flex flex-col justify-between items-center lg:items-end relative z-10" style={{ transform: "translateZ(60px)" }}>
+                  <div className="text-center lg:text-right w-full">
+                    <div className="flex items-center justify-center lg:justify-end gap-3 mb-6">
+                      <span className="text-[10px] font-bold text-primary uppercase tracking-widest order-2 lg:order-1">
+                        Case Studies
+                      </span>
+                      <div className="p-2 bg-primary text-primary-foreground rounded-lg order-1 lg:order-2">
+                        <Layers className="w-4 h-4" />
+                      </div>
+                    </div>
+                    <h2 className="text-3xl lg:text-4xl font-black text-foreground mb-4">
+                      Showcase
+                    </h2>
+                  </div>
 
-              {/* Decorative elements for card */}
-              <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
-              <div className="absolute -top-10 -left-10 w-24 h-24 bg-secondary/5 rounded-full blur-3xl group-hover:bg-secondary/10 transition-colors" />
+                  {/* Stacked Cards Visual - Centered in Right Half */}
+                  <div className="relative flex-1 w-full flex items-center justify-center py-6">
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      {/* Card 1 */}
+                      <div className="absolute w-36 h-24 bg-background border border-foreground/10 rounded-2xl rotate-[-12deg] -translate-x-4 shadow-xl transition-all duration-700 group-hover:rotate-[-20deg] group-hover:-translate-x-12 opacity-80" />
+                      {/* Card 2 */}
+                      <div className="absolute w-36 h-24 bg-background border border-foreground/10 rounded-2xl rotate-[8deg] translate-x-4 shadow-xl transition-all duration-700 group-hover:rotate-[15deg] group-hover:translate-x-12 opacity-80" />
+                      {/* Main Top Card */}
+                      <div className="relative w-40 h-28 bg-primary/20 backdrop-blur-md border border-primary/40 rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-700 group-hover:scale-110">
+                        <Monitor className="w-8 h-8 text-primary" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="w-full flex justify-between lg:justify-end items-center gap-6">
+                    <p className="text-[10px] text-muted-foreground lg:text-right max-w-[120px] leading-tight">
+                      Explore a collection of high-fidelity implementations.
+                    </p>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => scrollTo("#projects")}
+                      className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-xl group-hover:shadow-primary/40 transition-shadow"
+                    >
+                      <ArrowUpRight className="w-8 h-8" />
+                    </motion.button>
+                  </div>
+                </div>
+
+                {/* Divider for Desktop - Asymmetric Dynamic Line */}
+                <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-y-1/2 w-px h-2/3 bg-gradient-to-b from-transparent via-foreground/10 to-transparent transform -skew-x-12" />
+              </motion.div>
             </div>
+
           </div>
         </div>
       </div>
@@ -243,13 +221,6 @@ const Hero = () => {
         }
         .animate-slow-pan {
           animation: slow-pan 20s linear infinite alternate;
-        }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 12s linear infinite;
         }
       `}</style>
     </section>
