@@ -13,6 +13,12 @@ type Project = {
 const Projects = () => {
   const projects: Project[] = [
     {
+      title: "Agencify",
+      year: "2026",
+      description: "Client Onboarding System",
+      link: "https://tryagencify.com",
+    },
+    {
       title: "BuildMyVita",
       year: "2025",
       description: "Resume Builder",
