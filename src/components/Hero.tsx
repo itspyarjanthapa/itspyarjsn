@@ -1,226 +1,156 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import {
-  ArrowUpRight,
-  Plus,
-  Zap,
-  MousePointer2,
-  Layers,
-  Sparkles,
-  Github,
-  Monitor,
-} from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Star, ArrowUpRight, Quote, ChevronRight, Globe, Zap, Heart } from "lucide-react";
+import { useRef } from "react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 const Hero = () => {
   const scrollTo = useSmoothScroll();
-  const spotlightRef = useRef<HTMLDivElement>(null);
-  const [isHovering, setIsHovering] = useState(false);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
 
-  const springConfig = { damping: 25, stiffness: 150 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const rotateX = useTransform(smoothY, [-250, 250], [10, -10]);
-  const rotateY = useTransform(smoothX, [-250, 250], [-10, 10]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!spotlightRef.current) return;
-    const rect = spotlightRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    mouseX.set(e.clientX - centerX);
-    mouseY.set(e.clientY - centerY);
-  };
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 10]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <section className="relative py-10 px-6 lg:px-12 bg-background transition-colors duration-500 overflow-hidden selection:bg-primary/30">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+    <section 
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col items-center justify-start pt-20 pb-10 px-6 overflow-hidden bg-background selection:bg-primary/30 transition-colors duration-500"
+    >
+      {/* Background Layer: Massive Text */}
+      <div className="absolute top-20 left-0 w-full overflow-hidden whitespace-nowrap pointer-events-none opacity-[0.03] select-none">
+        <motion.h1 
+          animate={{ x: [0, -1000] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          className="text-[25vw] font-black uppercase leading-none"
+        >
+          Creative Developer Designer Problem Solver Engineer
+        </motion.h1>
+      </div>
 
-          {/* Main Mesh Gradient Card - Col 1 to 6 */}
-          <div className="lg:col-span-6 relative group">
-            <div className="relative h-[450px] lg:h-[550px] rounded-[3rem] overflow-hidden border border-foreground/10 shadow-xl transition-colors duration-500">
-              {/* Mesh Gradient Background */}
-              <div className="absolute inset-0 bg-[#3b82f6]">
-                <div
-                  className="absolute inset-0 opacity-70 mix-blend-overlay animate-pulse"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 20% 30%, #8b5cf6 0%, transparent 50%), radial-gradient(circle at 80% 70%, #06b6d4 0%, transparent 50%), radial-gradient(circle at 50% 50%, #3b82f6 0%, transparent 70%)",
-                  }}
-                />
-                <div
-                  className="absolute inset-0 opacity-40 animate-slow-pan"
-                  style={{
-                    backgroundImage:
-                      "url('https://grainy-gradients.vercel.app/noise.svg')",
-                    backgroundSize: "200px",
-                    filter: "contrast(150%) brightness(1000%)",
-                  }}
-                />
-              </div>
+      {/* Main Grid Layout */}
+      <div className="relative z-10 w-full max-w-[1600px] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-10">
+        
+        {/* Left Column: Introduction & Social Proof */}
+        <motion.div 
+          style={{ y: y2, opacity }}
+          className="lg:col-span-4 flex flex-col gap-10"
+        >
+          <div className="flex flex-col gap-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-3 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 w-fit"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Available for projects</span>
+            </motion.div>
 
-              {/* Text Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-between p-10">
-                <div className="flex justify-between items-start">
-                  <div className="bg-background/10 backdrop-blur-md rounded-full px-4 py-2 border border-foreground/20 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-white text-[10px] font-bold uppercase tracking-widest">
-                      Available for projects
-                    </span>
-                  </div>
-                </div>
+            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+              Visual <span className="text-primary italic">Architect</span> <br />
+              & Engineer.
+            </h1>
 
-                <div className="bg-background/80 backdrop-blur-2xl border border-foreground/10 rounded-[2.5rem] p-8 lg:p-10 transform transition-all duration-700 group-hover:-translate-y-2">
-                  <h1 className="text-4xl lg:text-5xl font-black text-foreground leading-tight tracking-tight">
-                    Engineering <span className="text-primary underline decoration-primary/30">digital</span> experiences that feel like magic.
-                  </h1>
-                </div>
-              </div>
-            </div>
+            <p className="text-xl text-muted-foreground max-w-md leading-relaxed">
+              Merging aesthetics with performance to build digital experiences that leave a lasting impression.
+            </p>
           </div>
 
-          {/* RIGHT SIDE BENTO - Col 7 to 12 */}
-          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 
-            {/* RIGHT SIDE BENTO - Col 7 to 12 - NOW UNIFIED */}
-            <div className="lg:col-span-6">
-              <motion.div
-                ref={spotlightRef}
-                onMouseMove={handleMouseMove}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => {
-                  setIsHovering(false);
-                  mouseX.set(0);
-                  mouseY.set(0);
-                }}
-                style={{
-                  rotateX,
-                  rotateY,
-                  transformStyle: "preserve-3d",
-                }}
-                className="relative h-auto lg:h-[550px] bg-foreground/5 dark:bg-foreground/10 rounded-[3rem] p-8 lg:p-12 overflow-visible lg:overflow-hidden group border border-foreground/10 transition-all duration-500 hover:border-primary/40 shadow-2xl flex flex-col lg:flex-row gap-12 lg:gap-12"
+        </motion.div>
+
+        {/* Center Column: Hero Visual */}
+        <motion.div 
+          style={{ y: y1 }}
+          className="lg:col-span-4 relative flex justify-center"
+        >
+          <div className="relative group">
+            {/* Geometric Shapes Behind Image */}
+            <div className="absolute -inset-10 bg-primary/10 blur-3xl rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-1000" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-primary/10 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-morph pointer-events-none" />
+            
+            <div
+              className="relative w-[300px] h-[450px] md:w-[450px] md:h-[650px] overflow-hidden rounded-[4rem] border-[1px] border-foreground/10 shadow-2xl"
+              style={{
+                background: "linear-gradient(to bottom, #5b9bd5 0%, #7fc3f5 30%, #a8d8f0 60%, #d6eefa 85%, #f0f9ff 100%)",
+              }}
+            >
+              <img
+                src="/profile_no_bg.png"
+                alt="Pyarjan Thapa"
+                className="w-full h-full object-cover scale-110 group-hover:scale-105 transition-transform duration-1000"
+              />
+              {/* Subtle bottom fade into background */}
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
+              
+              {/* Overlay Button */}
+              <button 
+                onClick={() => scrollTo("#projects")}
+                className="absolute bottom-10 left-10 right-10 py-6 bg-foreground text-background rounded-[2rem] font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-primary hover:text-primary-foreground transition-all active:scale-95"
               >
-                {/* Spotlight Effect */}
-                <div
-                  className="absolute inset-0 pointer-events-none transition-opacity duration-300"
-                  style={{
-                    background: isHovering
-                      ? `radial-gradient(800px circle at ${smoothX.get() + 300}px ${smoothY.get() + 250}px, hsl(var(--primary)/0.1), transparent 80%)`
-                      : ""
-                  }}
-                />
+                View Works <ArrowUpRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
 
-                {/* Left Side of Unified Card: The Craft */}
-                <div className="flex-1 flex flex-col justify-between relative z-10" style={{ transform: "translateZ(40px)" }}>
-                  <div>
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="p-3 bg-primary/10 rounded-2xl text-primary transform group-hover:rotate-12 transition-transform duration-500">
-                        <Zap className="w-6 h-6" />
-                      </div>
-                      <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-[0.2em]">
-                        Design & Dev
-                      </span>
-                    </div>
-                    <h2 className="text-3xl lg:text-4xl font-black text-foreground mb-4">
-                      The Craft
-                    </h2>
-                    <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                      Merging technical precision with creative intuition to build software that is both robust and beautiful.
-                    </p>
-                  </div>
+        {/* Right Column: Experience & Details */}
+        <motion.div 
+          style={{ y: y2, opacity }}
+          className="lg:col-span-4 flex flex-col gap-10 lg:pl-10"
+        >
+          <div className="relative p-10 rounded-[3rem] border border-foreground/5 bg-foreground/[0.02] backdrop-blur-xl overflow-hidden group">
+            <Quote className="absolute -top-4 -right-4 w-24 h-24 text-primary/5 -rotate-12 group-hover:text-primary/10 transition-colors" />
+            <p className="text-2xl font-medium leading-relaxed italic mb-8 relative z-10">
+              "Designing logic, <br /> 
+              coding <span className="text-primary">intuition</span>."
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-1 bg-primary/20 rounded-full" />
+              <span className="text-xs uppercase tracking-[0.3em] font-bold text-muted-foreground">Philosophy</span>
+            </div>
+          </div>
 
-                  {/* Animated UI Elements Bridge */}
-                  <div className="relative h-24 mt-6 overflow-hidden rounded-2xl border border-foreground/5 bg-foreground/5 flex items-center justify-center">
-                    <div className="absolute inset-0 flex items-center justify-center space-x-2">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <motion.div
-                          key={i}
-                          animate={{
-                            height: [15, 50, 25, 60, 15],
-                            opacity: [0.3, 0.6, 0.3]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: i * 0.15,
-                            ease: "easeInOut",
-                          }}
-                          className="w-1 rounded-full bg-primary"
-                        />
-                      ))}
-                    </div>
-
-                  </div>
-                </div>
-
-                {/* Right Side of Unified Card: The Showcase */}
-                <div className="flex-1 flex flex-col justify-between items-center lg:items-end relative z-10" style={{ transform: "translateZ(60px)" }}>
-                  <div className="text-center lg:text-right w-full">
-                    <div className="flex items-center justify-center lg:justify-end gap-3 mb-6">
-                      <span className="text-[10px] font-bold text-primary uppercase tracking-widest order-2 lg:order-1">
-                        Case Studies
-                      </span>
-                      <div className="p-2 bg-primary text-primary-foreground rounded-lg order-1 lg:order-2">
-                        <Layers className="w-4 h-4" />
-                      </div>
-                    </div>
-                    <h2 className="text-3xl lg:text-4xl font-black text-foreground mb-4">
-                      Showcase
-                    </h2>
-                  </div>
-
-                  {/* Stacked Cards Visual - Centered in Right Half */}
-                  <div className="relative flex-1 w-full flex items-center justify-center py-6">
-                    <div className="relative w-full h-full flex items-center justify-center">
-                      {/* Card 1 */}
-                      <div className="absolute w-36 h-24 bg-background border border-foreground/10 rounded-2xl rotate-[-12deg] -translate-x-4 shadow-xl transition-all duration-700 group-hover:rotate-[-20deg] group-hover:-translate-x-12 opacity-80" />
-                      {/* Card 2 */}
-                      <div className="absolute w-36 h-24 bg-background border border-foreground/10 rounded-2xl rotate-[8deg] translate-x-4 shadow-xl transition-all duration-700 group-hover:rotate-[15deg] group-hover:translate-x-12 opacity-80" />
-                      {/* Main Top Card */}
-                      <div className="relative w-40 h-28 bg-primary/20 backdrop-blur-md border border-primary/40 rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-700 group-hover:scale-110">
-                        <Monitor className="w-8 h-8 text-primary" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="w-full flex justify-between lg:justify-end items-center gap-6">
-                    <p className="text-[10px] text-muted-foreground lg:text-right max-w-[120px] leading-tight">
-                      Explore a collection of high-fidelity implementations.
-                    </p>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => scrollTo("#projects")}
-                      className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-xl group-hover:shadow-primary/40 transition-shadow"
-                    >
-                      <ArrowUpRight className="w-8 h-8" />
-                    </motion.button>
-                  </div>
-                </div>
-
-                {/* Divider for Desktop - Asymmetric Dynamic Line */}
-                <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-y-1/2 w-px h-2/3 bg-gradient-to-b from-transparent via-foreground/10 to-transparent transform -skew-x-12" />
-              </motion.div>
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-6 group cursor-pointer" onClick={() => scrollTo("#contact")}>
+              <div className="w-16 h-16 rounded-full border border-foreground/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all">
+                <ChevronRight className="w-6 h-6 group-hover:translate-x-1 group-hover:text-primary-foreground transition-all" />
+              </div>
+              <div>
+                <div className="text-lg font-bold group-hover:text-primary transition-colors">Start a conversation</div>
+                <div className="text-sm text-muted-foreground">Ask about current availability</div>
+              </div>
             </div>
 
+            <div className="h-px w-full bg-foreground/5" />
+
+            <div className="flex items-center gap-4 flex-wrap">
+              <span className="text-[10px] font-mono text-muted-foreground uppercase">Tech I Love:</span>
+              {["React", "Framer", "Next.JS", "Node"].map((tech) => (
+                <span key={tech} className="px-3 py-1 bg-foreground/5 rounded-lg text-xs font-bold border border-foreground/5">{tech}</span>
+              ))}
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`
-        @keyframes slow-pan {
-          0% { background-position: 0% 0%; }
-          100% { background-position: 100% 100%; }
+        @keyframes morph {
+          0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+          50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+          100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
         }
-        .animate-slow-pan {
-          animation: slow-pan 20s linear infinite alternate;
+        .animate-morph {
+          animation: morph 8s ease-in-out infinite;
         }
       `}</style>
     </section>
@@ -228,3 +158,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+

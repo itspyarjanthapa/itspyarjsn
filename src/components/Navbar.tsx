@@ -10,7 +10,7 @@ import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 const navLinks = [
     { name: "Home", href: "#" },
     { name: "Projects", href: "#projects" },
-    { name: "Tech", href: "#tech-stack" },
+    { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
 ];
 
