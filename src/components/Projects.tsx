@@ -42,6 +42,14 @@ const Projects = () => {
             image: "/who.png"
         },
         {
+            title: "MultiPostr",
+            year: "2026",
+            category: "",
+            description: "MultiPostr is designed for anyone who wants to maximize their impact on social media without burning out.",
+            link: "https://multipostr.pyarjanthapa.com.np/",
+            image: "/multipostr.jpeg"
+        },
+        {
             title: "Vutungtung",
             year: "2025",
             category: "MOBILITY",
