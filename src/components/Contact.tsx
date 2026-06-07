@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, Mail, Send, Globe, MapPin, Clock } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, Send, Globe, MapPin, Clock, Youtube, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
@@ -95,6 +95,10 @@ const Contact = () => {
                             <a href="https://github.com/itspyarjanthapa" target="_blank" className="flex items-center justify-between p-4 rounded-2xl bg-foreground/5 hover:bg-primary hover:text-primary-foreground transition-all">
                                 <span className="font-bold">GitHub</span>
                                 <Github className="w-5 h-5" />
+                            </a>
+                            <a href="https://blogs.pyarjanthapa.com.np/" target="_blank" className="flex items-center justify-between p-4 rounded-2xl bg-foreground/5 hover:bg-primary hover:text-primary-foreground transition-all">
+                                <span className="font-bold">Blogs</span>
+                                <Link className="w-5 h-5" />
                             </a>
                         </div>
                     </div>
