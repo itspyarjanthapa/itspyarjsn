@@ -11,17 +11,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 const queryClient = new QueryClient();
 
-import HangingBulbToggle from "@/components/HangingBulbToggle";
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <TooltipProvider>
-
-
-
-        <HangingBulbToggle />
-
         <Toaster />
         <Sonner />
         <BrowserRouter>
