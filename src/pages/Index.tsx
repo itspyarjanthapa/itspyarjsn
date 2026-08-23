@@ -116,7 +116,7 @@ const Index = () => {
       time: "2026",
       content: "MultiPostr is designed for anyone who wants to maximize their impact on social media without burning out.",
       category: "SOCIAL UTILITY",
-      image: "/multipostr.jpeg",
+      image: "/multipostr.png",
       link: "https://multipostr.pyarjanthapa.com.np/",
       tags: ["React", "API Integrations", "OAuth", "Tailwind"],
     },
