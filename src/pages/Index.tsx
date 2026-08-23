@@ -369,12 +369,12 @@ const Index = () => {
               <Youtube className="w-4 h-4" /> YouTube
             </a>
             <a
-              href="https://v1.pyarjanthapa.com.np"
+              href="https://v0.pyarjanthapa.com.np"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-muted hover:bg-muted/80 text-foreground border border-neutral-200 dark:border-neutral-800 font-semibold rounded-lg px-5 py-2 text-sm transition-colors"
             >
-              <ExternalLink className="w-4 h-4" /> Portfolio V1
+              <ExternalLink className="w-4 h-4" /> Portfolio V0
             </a>
           </div>
         </div>
