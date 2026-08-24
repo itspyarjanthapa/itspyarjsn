@@ -92,7 +92,7 @@ const Index = () => {
       category: "PRO-TOOL",
       image: "/buildmyvita.png",
       link: "https://buildmyvita.com",
-      tags: ["React", "AI Integration", "Node.js", "Zod"],
+      tags: ["Next.js", "Postgress", "Node.js", "Zod"],
     },
     {
       id: "whoknows",
@@ -105,7 +105,7 @@ const Index = () => {
       category: "GAME DESIGN",
       image: "/who.png",
       link: "https://whoknowstheword.vercel.app",
-      tags: ["Vite", "TailwindCSS", "Framer Motion"],
+      tags: ["React-Native", "Styled-Components", "Expo CLi"],
     },
     {
       id: "multipostr",
@@ -118,7 +118,7 @@ const Index = () => {
       category: "SOCIAL UTILITY",
       image: "/multipostr.png",
       link: "https://multipostr.pyarjanthapa.com.np/",
-      tags: ["React", "API Integrations", "OAuth", "Tailwind"],
+      tags: ["AI", "TypeScript", "PostgreSQL", "Tailwind"],
     },
     {
       id: "vutungtung",
@@ -131,7 +131,7 @@ const Index = () => {
       category: "MOBILITY",
       image: "/vutungtung.png",
       link: "https://vutungtung-rental.vercel.app",
-      tags: ["React", "Mapbox", "Firebase", "Realtime DB"],
+      tags: ["React", "MySQL", "Supabase", "Tailwind"],
     },
   ]);
 
