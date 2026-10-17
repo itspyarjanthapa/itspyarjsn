@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useLayoutEffect, useState } from "react"
+import { flushSync } from "react-dom"
 
 type Theme = "dark" | "light" | "system"
 
@@ -13,6 +14,27 @@ type ThemeProviderState = {
     setTheme: (theme: Theme) => void
 }
 
+type DocumentWithViewTransition = Document & {
+    startViewTransition?: (callback: () => void) => void
+}
+
+const applyThemeToDocument = (theme: Theme) => {
+    const root = window.document.documentElement
+
+    root.classList.remove("light", "dark")
+
+    if (theme === "system") {
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+            .matches
+            ? "dark"
+            : "light"
+
+        root.classList.add(systemTheme)
+    } else {
+        root.classList.add(theme)
+    }
+}
+
 const initialState: ThemeProviderState = {
     theme: "system",
     setTheme: () => null,
@@ -25,33 +47,36 @@ export function ThemeProvider({
     defaultTheme = "system",
     storageKey = "vite-ui-theme",
 }: ThemeProviderProps) {
-    const [theme, setTheme] = useState<Theme>(
+    const [theme, setThemeState] = useState<Theme>(
         () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
     )
 
-    useEffect(() => {
-        const root = window.document.documentElement
-
-        root.classList.remove("light", "dark")
-
-        if (theme === "system") {
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-                .matches
-                ? "dark"
-                : "light"
-
-            root.classList.add(systemTheme)
-            return
-        }
-
-        root.classList.add(theme)
+    useLayoutEffect(() => {
+        applyThemeToDocument(theme)
     }, [theme])
 
     const value = {
         theme,
-        setTheme: (theme: Theme) => {
-            localStorage.setItem(storageKey, theme)
-            setTheme(theme)
+        setTheme: (nextTheme: Theme) => {
+            localStorage.setItem(storageKey, nextTheme)
+
+            const updateTheme = () => {
+                applyThemeToDocument(nextTheme)
+                setThemeState(nextTheme)
+            }
+
+            const transitionDocument = document as DocumentWithViewTransition
+            const prefersReducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches
+
+            if (transitionDocument.startViewTransition && !prefersReducedMotion) {
+                transitionDocument.startViewTransition(() => {
+                    flushSync(updateTheme)
+                })
+            } else {
+                updateTheme()
+            }
         },
     }
 

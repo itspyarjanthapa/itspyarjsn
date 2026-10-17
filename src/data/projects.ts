@@ -1,0 +1,133 @@
+export type Project = {
+  id: string;
+  name: string;
+  category: string;
+  year: string;
+  desc: string;
+  longDesc: string;
+  image: string;
+  link?: string;
+  tags: string[];
+  color: string;
+  emoji: string;
+  challenge: string;
+  solution: string;
+  impact: string;
+};
+
+export const PROJECTS: Project[] = [
+  {
+    id: "sarathi",
+    name: "Sarathi",
+    category: "MOBILITY",
+    year: "2026",
+    emoji: "🚗",
+    desc: "A route-based ride-sharing app that matches riders heading between the same origin and destination.",
+    longDesc:
+      "Sarathi helps riders choose their origin and destination, find others traveling along the same route, and share a ride together.",
+    image: "/placeholder.svg",
+    tags: ["Expo CLI", "React Native", "TypeScript", "PostgreSQL", "Supabase"],
+    color: "hsl(0 0% 20%)",
+    challenge:
+      "Riders traveling along similar routes need a simple way to find one another and coordinate a shared ride.",
+    solution:
+      "Sarathi lets riders select their starting point and destination, then matches them with others heading along the same route so they can share a ride.",
+    impact:
+      "Brings route selection, rider matching, and ride sharing together in one mobile app experience.",
+  },
+  {
+    id: "agencify",
+    name: "Agencify",
+    category: "SAAS PLATFORM",
+    year: "2026",
+    emoji: "🚀",
+    desc: "Advanced client onboarding and management system for modern digital agencies.",
+    longDesc:
+      "Agencify is a full-featured SaaS platform built for digital agencies who need a streamlined way to onboard clients, manage projects, and track deliverables — all in one place.",
+    image: "/agencify.png",
+    link: "https://tryagencify.com",
+    tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
+    color: "hsl(218 93% 55%)",
+    challenge:
+      "Agencies were juggling too many tools — proposals in Google Docs, contracts in DocuSign, tasks in Notion. The friction was losing clients.",
+    solution:
+      "Built a unified dashboard with smart onboarding flows, role-based access, and real-time project tracking with automated status updates.",
+    impact: "Early adopters reported 40% reduction in client onboarding time and significantly improved team coordination.",
+  },
+  {
+    id: "buildmyvita",
+    name: "BuildMyVita",
+    category: "PRO TOOL",
+    year: "2025",
+    emoji: "📄",
+    desc: "A high-performance resume builder with real-time AI-powered optimization.",
+    longDesc:
+      "BuildMyVita lets users craft polished, ATS-friendly resumes with an intuitive drag-and-drop editor and AI suggestions that tailor content to specific job descriptions.",
+    image: "/buildmyvita.png",
+    link: "https://buildmyvita.com",
+    tags: ["Next.js", "PostgreSQL", "Node.js", "Zod"],
+    color: "hsl(142 71% 45%)",
+    challenge:
+      "Job seekers were spending hours reformatting resumes for different roles and still getting filtered out by ATS systems.",
+    solution:
+      "Implemented a real-time AI layer that analyzes job descriptions and suggests keyword-optimized resume rewrites, paired with clean exportable templates.",
+    impact: "Helped hundreds of users land interviews at top-tier companies by improving resume match scores.",
+  },
+  {
+    id: "whoknows",
+    name: "Who Knows?",
+    category: "GAME DESIGN",
+    year: "2025",
+    emoji: "🎮",
+    desc: "Social word game challenging knowledge and intuition across global communities.",
+    longDesc:
+      "Who Knows? is a multiplayer social game where players compete to guess words based on cryptic clues. The game blends general knowledge with intuition and social dynamics.",
+    image: "/who.png",
+    link: "https://whoknowstheword.vercel.app",
+    tags: ["React Native", "Styled Components", "Expo CLI"],
+    color: "hsl(38 92% 50%)",
+    challenge:
+      "Most trivia games feel stale and solo. Players wanted something that felt social, fast-paced, and replayable.",
+    solution:
+      "Designed a real-time multiplayer system with dynamic question pools, emoji reactions, and a leaderboard that refreshes daily.",
+    impact: "Achieved strong early retention with users averaging 3+ sessions per week in beta testing.",
+  },
+  {
+    id: "multipostr",
+    name: "MultiPostr",
+    category: "SOCIAL UTILITY",
+    year: "2026",
+    emoji: "📣",
+    desc: "Maximize social media impact without burnout — AI-powered multi-platform posting.",
+    longDesc:
+      "MultiPostr is a content scheduling and cross-posting tool that uses AI to adapt your message for each platform's tone and format — Instagram, LinkedIn, Twitter, and more.",
+    image: "/multipostr.png",
+    link: "https://multipostr.pyarjanthapa.com.np/",
+    tags: ["AI", "TypeScript", "PostgreSQL", "Tailwind"],
+    color: "hsl(271 76% 53%)",
+    challenge:
+      "Content creators were rewriting the same post 4-5 times for different platforms, burning out in the process.",
+    solution:
+      "Built an AI adapter that rewrites posts to match each platform's voice and best practices, with a unified scheduling dashboard.",
+    impact: "Beta users reported saving 5+ hours per week on content production while growing reach across platforms.",
+  },
+  {
+    id: "vutungtung",
+    name: "Vutungtung",
+    category: "MOBILITY",
+    year: "2025",
+    emoji: "🚲",
+    desc: "End-to-end vehicle rental ecosystem with real-time tracking and verification.",
+    longDesc:
+      "Vutungtung is a full-stack mobility platform for Nepal's rental vehicle market — connecting owners and renters with live GPS tracking, digital contracts, and identity verification.",
+    image: "/vutungtung.png",
+    link: "https://vutungtung-rental.vercel.app",
+    tags: ["React", "MySQL", "Supabase", "Tailwind"],
+    color: "hsl(0 72% 51%)",
+    challenge:
+      "Nepal's vehicle rental market lacked trust. Renters couldn't verify vehicles and owners had no protection against fraud.",
+    solution:
+      "Built a two-sided marketplace with NID verification, real-time GPS embedding, and digital rental agreements signed via OTP.",
+    impact: "Launched in Butwal with positive reception from local rental businesses seeking to digitize operations.",
+  },
+];
