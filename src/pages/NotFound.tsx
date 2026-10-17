@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Home, Search } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -11,46 +11,60 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background text-foreground transition-colors duration-500 px-6">
-      <div className="text-center">
-        {/* Big 404 */}
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-5 py-16 text-foreground">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-1/2 h-[32rem] w-[32rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-border/60" />
+        <div className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-border/40" />
+      </div>
+
+      <div className="relative w-full max-w-2xl text-center">
         <motion.h1
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: -18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-[10rem] md:text-[16rem] font-black leading-none tracking-tighter text-foreground/5 select-none"
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="select-none text-[9rem] font-black leading-[0.8] tracking-[-0.1em] text-foreground/[0.07] sm:text-[13rem] md:text-[16rem]"
         >
           404
         </motion.h1>
 
-        {/* Content */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="relative -mt-16 flex flex-col items-center gap-6"
+          transition={{ delay: 0.12, duration: 0.45, ease: "easeOut" }}
+          className="relative -mt-5 flex flex-col items-center gap-5 sm:-mt-8"
         >
-          <div className="flex items-center gap-3">
-            <div className="h-px w-10 bg-primary" />
-            <span className="text-primary text-xs font-mono tracking-[0.3em] uppercase">Error</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            <Search className="h-3.5 w-3.5" />
+            Lost in the wrong place
           </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground">
-            Page not found
+
+          <h2 className="text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
+            This page took a wrong turn.
           </h2>
-          <p className="text-muted-foreground text-lg max-w-sm">
-            The page you're looking for doesn't exist or has been moved.
+          <p className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
+            The link may be outdated, or the page may have moved. Let’s get you back on the right route.
           </p>
 
-          <a
-            href="/"
-            className="mt-4 inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-opacity"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </a>
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <Home className="h-4 w-4" />
+              Go home
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+            <Link
+              to="/work"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-3 text-sm font-semibold transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Browse my work
+            </Link>
+          </div>
         </motion.div>
       </div>
-    </div>
+    </main>
   );
 };
 

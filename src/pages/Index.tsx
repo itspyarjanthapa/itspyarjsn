@@ -43,9 +43,8 @@ const TECH_LOGOS: Record<string, string> = {
 const PROFILE = {
   name: "Pyarjan Thapa",
   shortName: "PYARJAN",
-  tagline: "Full Stack Engineer & UI/UX Designer",
-  bio: "I'm Pyarjan Thapa, a full-stack engineer based in Butwal, Nepal. I build thoughtful digital products, from polished interfaces to reliable, scalable web applications.",
-  bio2: "I enjoy turning early ideas into useful products and exploring the space where design and technology meet. I'm currently teaching coding and robotics, and open to select freelance projects and collaborations.",
+  tagline: "Full-stack engineer building products people actually use.",
+  bio: "I design and build web and mobile applications, from the interface to the database, with Next.js, TypeScript, Node.js and PostgreSQL. I’m based in Butwal, Nepal, and I teach coding and robotics to 300+ students. I’m open to select freelance projects and collaborations.",
   location: "Butwal, Nepal",
   email: "info@pyarjanthapa.com.np",
   github: "itspyarjanthapa",
@@ -130,9 +129,9 @@ const Index = () => {
         {/* ── HERO ───────────────────────────────────────────────────── */}
         <section className="pt-10 pb-10 md:pt-14 md:pb-12 grid md:grid-cols-[1fr_200px] gap-8 md:gap-10 items-start border-b border-border animate-fade-up">
           <div>
-            <h1 className="flex items-center justify-between md:justify-start text-4xl md:text-5xl font-black tracking-tight leading-tight mb-5">
-              <span>
-                hi there{" "}
+            <h1 className="flex items-center justify-between gap-3 md:justify-start text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight mb-5">
+              <span className="min-w-0">
+                Hi, I’m Pyarjan Thapa{" "}
                 <span className="inline-block" style={{ animation: "wave 2.5s ease-in-out infinite" }}>👋</span>
               </span>
               <span className="md:hidden w-16 h-16 rounded-2xl overflow-hidden border border-border flex-shrink-0">
@@ -141,10 +140,10 @@ const Index = () => {
             </h1>
 
             <div className="mb-5 max-w-2xl">
-              <p className="text-sm leading-7 text-muted-foreground">
-                {PROFILE.bio}
+              <p className="text-base font-semibold leading-relaxed text-foreground sm:text-lg">
+                {PROFILE.tagline}
               </p>
-              <p className="text-sm leading-7 text-muted-foreground mt-3">{PROFILE.bio2}</p>
+              <p className="text-sm leading-7 text-muted-foreground mt-3">{PROFILE.bio}</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
@@ -193,8 +192,8 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {PROJECTS.slice(0, 3).map((p) => (
               <Link
-                key={p.id}
-                to={`/work/${p.id}`}
+                key={p.slug}
+                to={`/work/${p.slug}`}
                 className="group block bg-card border border-border rounded-xl overflow-hidden hover-lift"
               >
                 <div className="relative h-40 bg-muted overflow-hidden">

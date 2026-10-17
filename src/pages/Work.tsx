@@ -51,8 +51,8 @@ const Work = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 animate-fade-up animate-fade-up-delay-1">
           {PROJECTS.map((p, i) => (
             <Link
-              key={p.id}
-              to={`/work/${p.id}`}
+              key={p.slug}
+              to={`/work/${p.slug}`}
               className="group bg-card border border-border rounded-2xl overflow-hidden hover-lift"
             >
               {/* Image */}

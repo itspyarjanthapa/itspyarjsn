@@ -5,13 +5,13 @@ import { PROJECTS } from "@/data/projects";
 import Footer from "@/components/Footer";
 
 const WorkDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
 
-  const project = PROJECTS.find((p) => p.id === id);
-  const others = PROJECTS.filter((p) => p.id !== id).slice(0, 2);
+  const project = PROJECTS.find((p) => p.slug === slug);
+  const others = PROJECTS.filter((p) => p.slug !== slug).slice(0, 2);
 
   if (!project) {
     return (
@@ -169,8 +169,8 @@ const WorkDetail = () => {
             <div className="grid sm:grid-cols-2 gap-4">
               {others.map((p) => (
                 <Link
-                  key={p.id}
-                  to={`/work/${p.id}`}
+                  key={p.slug}
+                  to={`/work/${p.slug}`}
                   className="group bg-card border border-border rounded-xl overflow-hidden hover-lift"
                 >
                   <div className="relative h-36 bg-muted overflow-hidden">

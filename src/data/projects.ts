@@ -1,5 +1,5 @@
 export type Project = {
-  id: string;
+  slug: string;
   name: string;
   category: string;
   year: string;
@@ -17,7 +17,7 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "sarathi",
+    slug: "sarathi",
     name: "Sarathi",
     category: "MOBILITY",
     year: "2026",
@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     desc: "A route-based ride-sharing app that matches riders heading between the same origin and destination.",
     longDesc:
       "Sarathi helps riders choose their origin and destination, find others traveling along the same route, and share a ride together.",
-    image: "/placeholder.svg",
+    image: "/sarathi.png",
     tags: ["Expo CLI", "React Native", "TypeScript", "PostgreSQL", "Supabase"],
     color: "hsl(0 0% 20%)",
     challenge:
@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
       "Brings route selection, rider matching, and ride sharing together in one mobile app experience.",
   },
   {
-    id: "agencify",
+    slug: "agencify",
     name: "Agencify",
     category: "SAAS PLATFORM",
     year: "2026",
@@ -52,10 +52,11 @@ export const PROJECTS: Project[] = [
       "Agencies were juggling too many tools — proposals in Google Docs, contracts in DocuSign, tasks in Notion. The friction was losing clients.",
     solution:
       "Built a unified dashboard with smart onboarding flows, role-based access, and real-time project tracking with automated status updates.",
-    impact: "Early adopters reported 40% reduction in client onboarding time and significantly improved team coordination.",
+    impact:
+      "Early adopters reported 40% reduction in client onboarding time and significantly improved team coordination.",
   },
   {
-    id: "buildmyvita",
+    slug: "buildmyvita",
     name: "BuildMyVita",
     category: "PRO TOOL",
     year: "2025",
@@ -71,10 +72,11 @@ export const PROJECTS: Project[] = [
       "Job seekers were spending hours reformatting resumes for different roles and still getting filtered out by ATS systems.",
     solution:
       "Implemented a real-time AI layer that analyzes job descriptions and suggests keyword-optimized resume rewrites, paired with clean exportable templates.",
-    impact: "Helped hundreds of users land interviews at top-tier companies by improving resume match scores.",
+    impact:
+      "Helped hundreds of users land interviews at top-tier companies by improving resume match scores.",
   },
   {
-    id: "whoknows",
+    slug: "whoknows",
     name: "Who Knows?",
     category: "GAME DESIGN",
     year: "2025",
@@ -90,29 +92,11 @@ export const PROJECTS: Project[] = [
       "Most trivia games feel stale and solo. Players wanted something that felt social, fast-paced, and replayable.",
     solution:
       "Designed a real-time multiplayer system with dynamic question pools, emoji reactions, and a leaderboard that refreshes daily.",
-    impact: "Achieved strong early retention with users averaging 3+ sessions per week in beta testing.",
+    impact:
+      "Achieved strong early retention with users averaging 3+ sessions per week in beta testing.",
   },
   {
-    id: "multipostr",
-    name: "MultiPostr",
-    category: "SOCIAL UTILITY",
-    year: "2026",
-    emoji: "📣",
-    desc: "Maximize social media impact without burnout — AI-powered multi-platform posting.",
-    longDesc:
-      "MultiPostr is a content scheduling and cross-posting tool that uses AI to adapt your message for each platform's tone and format — Instagram, LinkedIn, Twitter, and more.",
-    image: "/multipostr.png",
-    link: "https://multipostr.pyarjanthapa.com.np/",
-    tags: ["AI", "TypeScript", "PostgreSQL", "Tailwind"],
-    color: "hsl(271 76% 53%)",
-    challenge:
-      "Content creators were rewriting the same post 4-5 times for different platforms, burning out in the process.",
-    solution:
-      "Built an AI adapter that rewrites posts to match each platform's voice and best practices, with a unified scheduling dashboard.",
-    impact: "Beta users reported saving 5+ hours per week on content production while growing reach across platforms.",
-  },
-  {
-    id: "vutungtung",
+    slug: "vutungtung",
     name: "Vutungtung",
     category: "MOBILITY",
     year: "2025",
@@ -128,6 +112,7 @@ export const PROJECTS: Project[] = [
       "Nepal's vehicle rental market lacked trust. Renters couldn't verify vehicles and owners had no protection against fraud.",
     solution:
       "Built a two-sided marketplace with NID verification, real-time GPS embedding, and digital rental agreements signed via OTP.",
-    impact: "Launched in Butwal with positive reception from local rental businesses seeking to digitize operations.",
+    impact:
+      "Launched in Butwal with positive reception from local rental businesses seeking to digitize operations.",
   },
 ];
