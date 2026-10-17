@@ -1,18 +1,16 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useLayoutEffect } from "react";
+import { Suspense, lazy, useLayoutEffect } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import Seo from "@/components/Seo";
 
 import Index from "./pages/Index";
-import Work from "./pages/Work";
-import WorkDetail from "./pages/WorkDetail";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+// Secondary routes are split out so the landing page ships less JavaScript.
+const Work = lazy(() => import("./pages/Work"));
+const WorkDetail = lazy(() => import("./pages/WorkDetail"));
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -25,13 +23,12 @@ const ScrollToTop = () => {
 };
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
+  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <TooltipProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Seo />
+        <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/work" element={<Work />} />
@@ -39,10 +36,10 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+        </Suspense>
+      </BrowserRouter>
+    </TooltipProvider>
+  </ThemeProvider>
 );
 
 export default App;

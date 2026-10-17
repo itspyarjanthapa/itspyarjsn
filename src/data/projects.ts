@@ -6,6 +6,7 @@ export type Project = {
   desc: string;
   longDesc: string;
   image: string;
+  imageSmall: string;
   link?: string;
   tags: string[];
   color: string;
@@ -25,7 +26,8 @@ export const PROJECTS: Project[] = [
     desc: "A route-based ride-sharing app that matches riders heading between the same origin and destination.",
     longDesc:
       "Sarathi helps riders choose their origin and destination, find others traveling along the same route, and share a ride together.",
-    image: "/sarathi.png",
+    image: "/sarathi.webp",
+    imageSmall: "/sarathi-800.webp",
     tags: ["Expo CLI", "React Native", "TypeScript", "PostgreSQL", "Supabase"],
     color: "hsl(0 0% 20%)",
     challenge:
@@ -44,7 +46,8 @@ export const PROJECTS: Project[] = [
     desc: "Advanced client onboarding and management system for modern digital agencies.",
     longDesc:
       "Agencify is a full-featured SaaS platform built for digital agencies who need a streamlined way to onboard clients, manage projects, and track deliverables — all in one place.",
-    image: "/agencify.png",
+    image: "/agencify.webp",
+    imageSmall: "/agencify-800.webp",
     link: "https://tryagencify.com",
     tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
     color: "hsl(218 93% 55%)",
@@ -64,7 +67,8 @@ export const PROJECTS: Project[] = [
     desc: "A high-performance resume builder with real-time AI-powered optimization.",
     longDesc:
       "BuildMyVita lets users craft polished, ATS-friendly resumes with an intuitive drag-and-drop editor and AI suggestions that tailor content to specific job descriptions.",
-    image: "/buildmyvita.png",
+    image: "/buildmyvita.webp",
+    imageSmall: "/buildmyvita-800.webp",
     link: "https://buildmyvita.com",
     tags: ["Next.js", "PostgreSQL", "Node.js", "Zod"],
     color: "hsl(142 71% 45%)",
@@ -84,7 +88,8 @@ export const PROJECTS: Project[] = [
     desc: "Social word game challenging knowledge and intuition across global communities.",
     longDesc:
       "Who Knows? is a multiplayer social game where players compete to guess words based on cryptic clues. The game blends general knowledge with intuition and social dynamics.",
-    image: "/who.png",
+    image: "/who.webp",
+    imageSmall: "/who-800.webp",
     link: "https://whoknowstheword.vercel.app",
     tags: ["React Native", "Styled Components", "Expo CLI"],
     color: "hsl(38 92% 50%)",
@@ -104,7 +109,8 @@ export const PROJECTS: Project[] = [
     desc: "End-to-end vehicle rental ecosystem with real-time tracking and verification.",
     longDesc:
       "Vutungtung is a full-stack mobility platform for Nepal's rental vehicle market — connecting owners and renters with live GPS tracking, digital contracts, and identity verification.",
-    image: "/vutungtung.png",
+    image: "/vutungtung.webp",
+    imageSmall: "/vutungtung-800.webp",
     link: "https://vutungtung-rental.vercel.app",
     tags: ["React", "MySQL", "Supabase", "Tailwind"],
     color: "hsl(0 72% 51%)",

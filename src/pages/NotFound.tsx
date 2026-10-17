@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight, Home, Search } from "lucide-react";
 
 const NotFound = () => {
@@ -18,21 +17,11 @@ const NotFound = () => {
       </div>
 
       <div className="relative w-full max-w-2xl text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: -18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="select-none text-[9rem] font-black leading-[0.8] tracking-[-0.1em] text-foreground/[0.07] sm:text-[13rem] md:text-[16rem]"
-        >
+        <h1 className="animate-fade-up select-none text-[9rem] font-black leading-[0.8] tracking-[-0.1em] text-foreground/[0.07] sm:text-[13rem] md:text-[16rem]">
           404
-        </motion.h1>
+        </h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.12, duration: 0.45, ease: "easeOut" }}
-          className="relative -mt-5 flex flex-col items-center gap-5 sm:-mt-8"
-        >
+        <div className="animate-fade-up animate-fade-up-delay-1 relative -mt-5 flex flex-col items-center gap-5 sm:-mt-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
             <Search className="h-3.5 w-3.5" />
             Lost in the wrong place
@@ -62,7 +51,7 @@ const NotFound = () => {
               Browse my work
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </main>
   );

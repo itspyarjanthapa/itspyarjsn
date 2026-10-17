@@ -135,7 +135,7 @@ const Index = () => {
                 <span className="inline-block" style={{ animation: "wave 2.5s ease-in-out infinite" }}>👋</span>
               </span>
               <span className="md:hidden w-16 h-16 rounded-2xl overflow-hidden border border-border flex-shrink-0">
-                <img src="/pp.jpeg" alt={PROFILE.name} className="w-full h-full object-cover grayscale" />
+                <img src="/pp.jpeg" alt={PROFILE.name} width={640} height={640} className="w-full h-full object-cover grayscale" />
               </span>
             </h1>
 
@@ -173,8 +173,7 @@ const Index = () => {
           </div>
 
           <div className="hidden md:block">
-            <div className="w-full aspect-square max-w-[200px] rounded-2xl overflow-hidden border border-border shadow-md">
-              <img src="/pp.jpeg" alt={PROFILE.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+            <div className="w-full aspect-square max-w-[200px] rounded-2xl overflow-hidden border border-border shadow-md">                <img src="/pp.jpeg" alt={PROFILE.name} width={640} height={640} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
             </div>
             <p className="text-[10px] text-muted-foreground text-center mt-2 font-mono">{PROFILE.name}</p>
           </div>
@@ -197,7 +196,15 @@ const Index = () => {
                 className="group block bg-card border border-border rounded-xl overflow-hidden hover-lift"
               >
                 <div className="relative h-40 bg-muted overflow-hidden">
-                  <img src={p.image} alt={p.name}
+                  <img
+                    src={p.image}
+                    srcSet={`${p.imageSmall} 800w, ${p.image} 1600w`}
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    alt={`${p.name} — ${p.category.toLowerCase()} project preview`}
+                    width={1600}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }} />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center bg-black/30">
@@ -270,6 +277,10 @@ const Index = () => {
                     src={TECH_LOGOS[tech]}
                     alt={tech}
                     title={tech}
+                    width={28}
+                    height={28}
+                    loading="lazy"
+                    decoding="async"
                     className="w-7 h-7 object-contain opacity-60 hover:opacity-100 transition-opacity"
                     style={{ filter: isDark ? "brightness(1.1)" : "grayscale(100%) brightness(0.4)" }}
                     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}

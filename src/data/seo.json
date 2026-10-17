@@ -1,0 +1,61 @@
+{
+  "site": {
+    "name": "Pyarjan Thapa",
+    "url": "https://www.pyarjanthapa.com.np",
+    "locale": "en_US",
+    "defaultImage": "/og-image.jpg",
+    "defaultImageAlt": "Pyarjan Thapa — full-stack engineer, React, Node, PostgreSQL"
+  },
+  "routes": {
+    "/": {
+      "title": "Pyarjan Thapa — Full-Stack Developer & Instructor",
+      "description": "Portfolio of Pyarjan Thapa, a full-stack developer in Butwal, Nepal building web and mobile products with React, Next.js, Node.js and PostgreSQL.",
+      "type": "website"
+    },
+    "/work": {
+      "title": "Work — Projects by Pyarjan Thapa",
+      "description": "Selected products by Pyarjan Thapa: Sarathi, Agencify, BuildMyVita, Who Knows? and Vutungtung — SaaS platforms, developer tools and mobile apps.",
+      "type": "website"
+    },
+    "/work/sarathi": {
+      "title": "Sarathi — Route-Based Ride-Sharing App | Pyarjan Thapa",
+      "description": "Sarathi is a React Native ride-sharing app that matches riders travelling the same route, built with Expo, TypeScript and Supabase.",
+      "image": "/og-sarathi.jpg",
+      "imageAlt": "Sarathi ride-sharing app preview",
+      "type": "article"
+    },
+    "/work/agencify": {
+      "title": "Agencify — Agency Client Onboarding SaaS | Pyarjan Thapa",
+      "description": "Agencify is a SaaS platform for client onboarding, proposals and project tracking, built for digital agencies with React, Next.js and Tailwind CSS.",
+      "image": "/og-agencify.jpg",
+      "imageAlt": "Agencify agency onboarding platform preview",
+      "type": "article"
+    },
+    "/work/buildmyvita": {
+      "title": "BuildMyVita — AI Resume Builder | Pyarjan Thapa",
+      "description": "BuildMyVita is an AI-powered resume builder with a drag-and-drop editor, ATS-friendly templates and job-description matching, built with Next.js and PostgreSQL.",
+      "image": "/og-buildmyvita.jpg",
+      "imageAlt": "BuildMyVita resume builder preview",
+      "type": "article"
+    },
+    "/work/whoknows": {
+      "title": "Who Knows? — Social Word Game | Pyarjan Thapa",
+      "description": "Who Knows? is a multiplayer social word game built with React Native and Expo, where players race to guess words from cryptic clues.",
+      "image": "/og-who-knows.jpg",
+      "imageAlt": "Who Knows? social word game preview",
+      "type": "article"
+    },
+    "/work/vutungtung": {
+      "title": "Vutungtung — Vehicle Rental Platform | Pyarjan Thapa",
+      "description": "Vutungtung is a vehicle rental platform for Nepal with GPS tracking, NID verification and digital contracts, built with React, Supabase and Tailwind CSS.",
+      "image": "/og-vutungtung.jpg",
+      "imageAlt": "Vutungtung vehicle rental platform preview",
+      "type": "article"
+    },
+    "/contact": {
+      "title": "Contact Pyarjan Thapa — Freelance & Collaborations",
+      "description": "Get in touch with Pyarjan Thapa about freelance projects, product collaborations and coding or robotics teaching opportunities.",
+      "type": "website"
+    }
+  }
+}

@@ -80,7 +80,12 @@ const WorkDetail = () => {
           <div className="w-full rounded-2xl overflow-hidden border border-border shadow-lg aspect-[16/8] bg-muted">
             <img
               src={project.image}
-              alt={project.name}
+              srcSet={`${project.image} 1600w`}
+              sizes="(min-width: 1024px) 1024px, 100vw"
+              alt={`${project.name} — ${project.desc}`}
+              width={1600}
+              height={900}
+              decoding="async"
               className="w-full h-full object-cover"
               onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }}
             />
@@ -175,8 +180,12 @@ const WorkDetail = () => {
                 >
                   <div className="relative h-36 bg-muted overflow-hidden">
                     <img
-                      src={p.image}
-                      alt={p.name}
+                      src={p.imageSmall}
+                      alt={`${p.name} — ${p.category.toLowerCase()} project preview`}
+                      width={800}
+                      height={450}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale-[30%] group-hover:grayscale-0"
                       onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }}
                     />

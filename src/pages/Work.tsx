@@ -59,7 +59,13 @@ const Work = () => {
               <div className="relative h-52 bg-muted overflow-hidden">
                 <img
                   src={p.image}
-                  alt={p.name}
+                  srcSet={`${p.imageSmall} 800w, ${p.image} 1600w`}
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  alt={`${p.name} — ${p.category.toLowerCase()} project preview`}
+                  width={1600}
+                  height={900}
+                  loading={i < 2 ? "eager" : "lazy"}
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale-[30%] group-hover:grayscale-0"
                   onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }}
                 />

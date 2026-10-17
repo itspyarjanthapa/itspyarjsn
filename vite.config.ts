@@ -16,12 +16,14 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    // Let Rollup split shared code per route: a single forced `vendor` chunk
+    // would make lazy routes download everything up front.
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+          if (!id.includes("node_modules")) return;
+          if (id.includes("react-router")) return "router";
+          if (id.includes("/react-dom/") || id.includes("/react/")) return "react";
         },
       },
     },

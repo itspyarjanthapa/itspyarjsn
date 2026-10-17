@@ -3,16 +3,118 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pyarjan Thapa - Fullstack Developer</title>
-    <meta name="description" content="Portfolio of Pyarjan Thapa, a fullstack developer specializing in modern web technologies" />
-    <meta name="author" content="Pyarjan Thapa" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <meta property="og:title" content="Pyarjan Thapa - Fullstack Developer" />
-    <meta property="og:description" content="Portfolio of Pyarjan Thapa, a fullstack developer specializing in modern web technologies" />
-  
+    <script>
+      // Apply the saved theme before first paint to avoid a light flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem("vite-ui-theme") || "dark";
+          var dark =
+            stored === "dark" ||
+            (stored === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          var root = document.documentElement;
+          root.classList.remove("light", "dark");
+          root.classList.add(dark ? "dark" : "light");
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/logo01.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- seo:start -->
+    <title>Pyarjan Thapa — Full-Stack Developer &amp; Instructor</title>
+    <meta
+      name="description"
+      content="Portfolio of Pyarjan Thapa, a full-stack developer in Butwal, Nepal building web and mobile products with React, Next.js, Node.js and PostgreSQL."
+    />
+    <meta name="author" content="Pyarjan Thapa" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://www.pyarjanthapa.com.np/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pyarjan Thapa" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://www.pyarjanthapa.com.np/" />
+    <meta
+      property="og:title"
+      content="Pyarjan Thapa — Full-Stack Developer &amp; Instructor"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio of Pyarjan Thapa, a full-stack developer in Butwal, Nepal building web and mobile products with React, Next.js, Node.js and PostgreSQL."
+    />
+    <meta
+      property="og:image"
+      content="https://www.pyarjanthapa.com.np/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Pyarjan Thapa — full-stack engineer, React, Node, PostgreSQL"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Pyarjan Thapa — Full-Stack Developer &amp; Instructor"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Pyarjan Thapa, a full-stack developer in Butwal, Nepal building web and mobile products with React, Next.js, Node.js and PostgreSQL."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.pyarjanthapa.com.np/og-image.jpg"
+    />
+
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <!-- seo:end -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pyarjan Thapa",
+        "jobTitle": "Full-Stack Developer",
+        "url": "https://www.pyarjanthapa.com.np/",
+        "image": "https://www.pyarjanthapa.com.np/pp.jpeg",
+        "email": "mailto:info@pyarjanthapa.com.np",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Butwal",
+          "addressRegion": "Lumbini",
+          "addressCountry": "NP"
+        },
+        "knowsAbout": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "React Native"
+        ],
+        "sameAs": [
+          "https://github.com/itspyarjanthapa",
+          "https://linkedin.com/in/pyarjanthapa",
+          "https://instagram.com/itspyarjanchhetri",
+          "https://www.youtube.com/@itspyarjanchhetri",
+          "https://blogs.pyarjanthapa.com.np/"
+        ]
+      }
+    </script>
   </head>
 
   <body>

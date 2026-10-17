@@ -1,8 +1,12 @@
 {
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/work", "destination": "/work/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/work/sarathi", "destination": "/work/sarathi/index.html" },
+    { "source": "/work/agencify", "destination": "/work/agencify/index.html" },
+    { "source": "/work/buildmyvita", "destination": "/work/buildmyvita/index.html" },
+    { "source": "/work/whoknows", "destination": "/work/whoknows/index.html" },
+    { "source": "/work/vutungtung", "destination": "/work/vutungtung/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
