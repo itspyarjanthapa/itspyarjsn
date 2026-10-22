@@ -38,8 +38,8 @@ export const PROJECTS: Project[] = [
       "Brings route selection, rider matching, and ride sharing together in one mobile app experience.",
   },
   {
-    slug: "agencify",
-    name: "Agencify",
+    slug: "merosanstha",
+    name: "MeroSanstha",
     category: "SAAS PLATFORM",
     year: "2026",
     emoji: "🚀",
