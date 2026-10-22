@@ -37,27 +37,27 @@ export const PROJECTS: Project[] = [
     impact:
       "Brings route selection, rider matching, and ride sharing together in one mobile app experience.",
   },
-  {
-    slug: "merosanstha",
-    name: "MeroSanstha",
-    category: "SAAS PLATFORM",
-    year: "2026",
-    emoji: "🚀",
-    desc: "Advanced client onboarding and management system for modern digital agencies.",
-    longDesc:
-      "Agencify is a full-featured SaaS platform built for digital agencies who need a streamlined way to onboard clients, manage projects, and track deliverables — all in one place.",
-    image: "/agencify.webp",
+{
+  slug: "merosanstha",
+  name: "MeroSanstha",
+  category: "SAAS PLATFORM",
+  year: "2026",
+  emoji: "🚀",
+  desc: "A streamlined client onboarding and workflow automation platform for modern agencies.",
+  longDesc:
+    "MeroSanstha is a full-featured SaaS platform designed for digital agencies to collect client requirements, automate reminders, schedule follow-ups, and streamline client onboarding with integrations for Slack and Google Sheets.",
+      image: "/agencify.webp",
     imageSmall: "/agencify-800.webp",
-    link: "https://tryagencify.com",
-    tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
-    color: "hsl(218 93% 55%)",
-    challenge:
-      "Agencies were juggling too many tools — proposals in Google Docs, contracts in DocuSign, tasks in Notion. The friction was losing clients.",
-    solution:
-      "Built a unified dashboard with smart onboarding flows, role-based access, and real-time project tracking with automated status updates.",
-    impact:
-      "Early adopters reported 40% reduction in client onboarding time and significantly improved team coordination.",
-  },
+  link: "https://tryagencify.com",
+  tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
+  color: "hsl(142 71% 35%)",
+  challenge:
+    "Agencies often struggle with scattered client requirements, manual follow-ups, and disconnected tools, making the onboarding process time-consuming and difficult to manage.",
+  solution:
+    "Built a unified dashboard with customizable onboarding forms, automated reminders, scheduled follow-ups, and integrations with Slack and Google Sheets to keep client information organized.",
+  impact:
+    "Designed to simplify client onboarding, reduce manual administrative work, and improve coordination between agencies and their clients.",
+},
   {
     slug: "buildmyvita",
     name: "BuildMyVita",
