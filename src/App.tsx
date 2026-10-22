@@ -2,6 +2,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Suspense, lazy, useLayoutEffect } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
 import Seo from "@/components/Seo";
 
 import Index from "./pages/Index";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        <Analytics />
       </BrowserRouter>
     </TooltipProvider>
   </ThemeProvider>
