@@ -24,6 +24,13 @@
       "imageAlt": "Sarathi ride-sharing app preview",
       "type": "article"
     },
+    "/work/wordspy": {
+      "title": "WordSpy: Imposter Party Game — Android Closed Beta | Pyarjan Thapa",
+      "description": "WordSpy: Imposter Party Game is an Android party game where players deduce who the imposter is. Join the closed beta on Google Play.",
+      "image": "/og-who-knows.jpg",
+      "imageAlt": "WordSpy imposter party game preview",
+      "type": "article"
+    },
     "/work/merosanstha": {
       "title": "MeroSanstha — Agency Client Onboarding SaaS | Pyarjan Thapa",
       "description": "MeroSanstha is a SaaS platform for client onboarding, automated reminders and follow-ups, built for digital agencies with React, Next.js and Tailwind CSS.",

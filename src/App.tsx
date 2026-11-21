@@ -4,6 +4,7 @@ import { Suspense, lazy, useLayoutEffect } from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import Seo from "@/components/Seo";
+import WordSpyBanner from "@/components/WordSpyBanner";
 
 import Index from "./pages/Index";
 
@@ -29,6 +30,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <Seo />
+        <WordSpyBanner />
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             <Route path="/" element={<Index />} />

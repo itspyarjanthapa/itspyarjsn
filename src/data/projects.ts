@@ -18,6 +18,27 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    slug: "wordspy",
+    name: "WordSpy: Imposter Party Game",
+    category: "PARTY GAME",
+    year: "2026",
+    emoji: "🕵️",
+    desc: "A thrilling imposter party game for Android. Blend in, spot the imposter, and outsmart your friends.",
+    longDesc:
+      "WordSpy: Imposter Party Game is a social deduction game for Android. Players take turns sharing subtle clues about a secret word while trying to figure out who the imposter is. Currently open for 14-day closed beta testing on Google Play.",
+    image: "/who.webp",
+    imageSmall: "/who-800.webp",
+    link: "https://play.google.com/apps/testing/com.pyarjan.wordspy",
+    tags: ["Android", "Party Game", "Mobile", "Google Play"],
+    color: "hsl(142 71% 45%)",
+    challenge:
+      "Creating an addictive, zero-friction local party game where friends can jump in immediately and play rounds without complex setups.",
+    solution:
+      "Engineered an intuitive mobile flow with randomized secret word packs, undercover imposter mechanics, and timer-driven voting rounds.",
+    impact:
+      "Currently in active closed testing on Google Play to satisfy the 14-day testing requirement prior to public release.",
+  },
+  {
     slug: "sarathi",
     name: "Sarathi",
     category: "MOBILITY",

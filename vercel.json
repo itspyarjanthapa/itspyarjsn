@@ -3,6 +3,7 @@
     { "source": "/work", "destination": "/work/index.html" },
     { "source": "/contact", "destination": "/contact/index.html" },
     { "source": "/work/sarathi", "destination": "/work/sarathi/index.html" },
+    { "source": "/work/wordspy", "destination": "/work/wordspy/index.html" },
     { "source": "/work/merosanstha", "destination": "/work/merosanstha/index.html" },
     { "source": "/work/buildmyvita", "destination": "/work/buildmyvita/index.html" },
     { "source": "/work/whoknows", "destination": "/work/whoknows/index.html" },
